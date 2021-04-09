@@ -4991,7 +4991,7 @@ body.sideNav {
         margin: 0 auto;
     }
 
-    #content {
+    /*#content {
         position: relative;
         min-height: 100%;
         width: 939.72px;
@@ -4999,7 +4999,7 @@ body.sideNav {
         padding-right: 103.14px;
         -webkit-box-shadow: 0 0 30px 0px rgba(222, 222, 222, 0.7);
         box-shadow: 0 0 30px 0px rgba(222, 222, 222, 0.7);
-    }
+    }*/
 
         #content.sidebar-navigation {
             width: 720px;
