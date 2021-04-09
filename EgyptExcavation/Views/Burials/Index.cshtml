@@ -1,10 +1,10 @@
-﻿@model IEnumerable<EgyptExcavation.Models.Burial>
-
+﻿@*@model IEnumerable<EgyptExcavation.Models.Burial>*@
+@model BrowseViewModel 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Browse Burials</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,253 +13,253 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BurialLocationNs)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialLocationNs)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialLocationEw)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialLocationEw)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LowPairNs)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().LowPairNs)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HighPairNs)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HighPairNs)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LowPairEw)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().LowPairEw)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HighPairEw)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HighPairEw)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialSubplot)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialSubplot)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialDepth)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialDepth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SouthToHead)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SouthToHead)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SouthToFeet)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SouthToFeet)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WestToHead)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().WestToHead)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WestToFeet)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().WestToFeet)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialSituation)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialSituation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LengthOfRemainsMeters)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().LengthOfRemainsMeters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LengthOfRemainsCentimeters)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().LengthOfRemainsCentimeters)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialNumber)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SampleNumber)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SampleNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GenderGe)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().GenderGe)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GeFunctionTotal)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().GeFunctionTotal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GenderBodyCol)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().GenderBodyCol)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SexMethod)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SexMethod)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BasilarSuture)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BasilarSuture)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VentralArc)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().VentralArc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SubpubicAngle)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SubpubicAngle)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SciaticNotch)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SciaticNotch)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PubicBone)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().PubicBone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PreaurSulcus)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().PreaurSulcus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MedialIpRamus)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().MedialIpRamus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DorsalPitting)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().DorsalPitting)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ForamanMagnum)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ForamanMagnum)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FemurHead)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().FemurHead)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HumerusHead)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HumerusHead)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Osteophytosis)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().Osteophytosis)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PubicSymphysis)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().PubicSymphysis)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FemurLength)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().FemurLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HumerusLength)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HumerusLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TibiaLength)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().TibiaLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Robust)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().Robust)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SupraorbitalRidges)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SupraorbitalRidges)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OrbitEdge)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().OrbitEdge)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ParietalBossing)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ParietalBossing)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gonian)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().Gonian)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NuchalCrest)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().NuchalCrest)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ZygomaticCrest)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ZygomaticCrest)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CranialSuture)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().CranialSuture)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaximumCranialLength)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().MaximumCranialLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaximumCranialBreadth)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().MaximumCranialBreadth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BasionBregmaHeight)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BasionBregmaHeight)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BasionNasion)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BasionNasion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BasionProsthionLength)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BasionProsthionLength)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BizygomaticDiameter)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BizygomaticDiameter)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NasionProsthion)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().NasionProsthion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaximumNasalBreadth)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().MaximumNasalBreadth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.InterorbitalBreadth)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().InterorbitalBreadth)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArtifactsDescription)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ArtifactsDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HairColor)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HairColor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PreservationIndex)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().PreservationIndex)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SampleTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SampleTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HairTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HairTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SoftTissueTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().SoftTissueTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BoneTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BoneTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ToothTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ToothTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TextileTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().TextileTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescriptionOfTaken)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().DescriptionOfTaken)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArtifactFound)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ArtifactFound)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstimateAge)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().EstimateAge)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AgeMethod)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().AgeMethod)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AgeCode)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().AgeCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EstimateLivingStature)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().EstimateLivingStature)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ToothAttrition)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ToothAttrition)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ToothEruption)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().ToothEruption)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PathologyAnomalies)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().PathologyAnomalies)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EpiphysealUnion)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().EpiphysealUnion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.YearFound)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().YearFound)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MonthFound)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().MonthFound)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DayFound)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().DayFound)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.HeadDirection)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().HeadDirection)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Gamous)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().Gamous)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialIcon)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialIcon)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialIcon2)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialIcon2)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BurialPreservation)
+                @Html.DisplayNameFor(model => model.Burials.FirstOrDefault().BurialPreservation)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Burials) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.BurialLocationNs)
@@ -513,3 +513,7 @@
 }
     </tbody>
 </table>
+
+<div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="" page-class-normal="btn" page-class-selected=" btn btn-primary" class="m-1">
+
+</div>

@@ -55,6 +55,8 @@ namespace EgyptExcavation
 
             app.UseEndpoints(endpoints =>
             {
+                // This route is meant to make the pagination for the Browse page work. It might hijack all routes that include only an integer so watch out for that
+                endpoints.MapControllerRoute("pagenum", "Burials/{pagenum}", new { Controller = "Burial", action = "Index" });
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

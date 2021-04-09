@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EgyptExcavation.Models;
+using EgyptExcavation.Models.ViewModels;
 
 namespace EgyptExcavation
 {
@@ -19,9 +20,22 @@ namespace EgyptExcavation
         }
 
         // GET: Burials
-        public async Task<IActionResult> Index()
+        // Edited by Jonah to include Pagination
+        public async Task<IActionResult> Index(int pageNum = 0)
         {
-            return View(await _context.Burial.ToListAsync());
+            int pageSize = 5;
+            BrowseViewModel browseViewModel = new BrowseViewModel
+            {
+                Burials = _context.Burial.Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    // This will need to be adjusted to account for when filters are applied
+                    TotalNumItems = _context.Burial.Count()
+                }
+            };
+            return View(browseViewModel);
         }
 
         // GET: Burials/Details/5
