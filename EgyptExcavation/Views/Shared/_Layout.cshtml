@@ -6,43 +6,180 @@
     <title>@ViewData["Title"] - EgyptExcavation</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-</head>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/css/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/base.css">
+    <link rel="stylesheet" href="~/css/responsive.css" media="all and (min-width:16em)">
+  </head>
+
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EgyptExcavation</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+
+    <header id="main-header" role="banner">
+        <div id="header-top" class="wrapper">
+            <h1><a id="site-name" asp-area="" asp-action="Home" asp-controller="Index">Fag el-Gamous</a></h1><a href="http://home.byu.edu/home/cas" class="sign-in button">Sign in</a>
+            <!--search
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+                -->
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+
+    <div class="nav-container">
+        <!-- Primary Nav-->
+        <nav id="primary-nav" role="navigation">
+            <ul>
+                <li> <a href="#" class="single current">Current tab</a></li>
+                <li>
+                <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
+                <div class="mega">
+                    <ul class="links">
+                        <li class="featured">
+                            <ul>
+                                <li><a asp-controller="burial" asp-action="Index">Burial</a></li>
+                                <li><a href="">Featured Link 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Menu item 1</a></li>
+                        <li>
+                            <a href="#">Menu item 2</a>
+                            <ul class="sublinks">
+                                <li><a href="">Submenu item 1</a></li>
+                                <li><a href="">Submenu item 2</a></li>
+                                <li><a href="">Submenu item 3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Menu item 3</a></li>
+                        <li><a href="">Menu item 4</a></li>
+                        <li><a href="">Menu item 5</a></li>
+                        <li><a href="">Menu item 6</a></li>
+                    </ul>
+
+                </div>
+                </li>
+                <li>
+                    <a href="">Menu2</a>
+                    <div class="mega">
+                        <ul class="links double">
+                            <li class="featured">
+                                <ul>
+                                    <li><a href="">Featured Link 1</a></li>
+                                    <li><a href="">Featured Link 2</a></li>
+                                </ul>
+                            </li>
+                            <li class="left">
+                                <ul>
+                                    <li><a href="#">Menu item 1</a></li>
+                                    <li>
+                                        <a href="#">Menu item 2</a>
+                                        <ul class="sublinks">
+                                            <li><a href="">Submenu item 1</a></li>
+                                            <li><a href="">Submenu item 2</a></li>
+                                            <li><a href="">Submenu item 3</a></li>
+                                            <li><a href="">Submenu item 4</a></li>
+                                            <li><a href="">Submenu item 5</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Menu item 3</a></li>
+                                    <li><a href="">Menu item 4</a></li>
+                                    <li><a href="">Menu item 5</a></li>
+                                    <li><a href="">Menu item 6</a></li>
+                                </ul>
+                            </li>
+                            <li class="left">
+                                <ul>
+                                    <li><a href="">Menu item 7</a></li>
+                                    <li><a href="">Menu item 8</a></li>
+                                    <li><a href="">Menu item 9</a></li>
+                                    <li><a href="">Menu item 10</a></li>
+                                    <li><a href="">Menu item 11</a></li>
+                                    <li><a href="">Menu item 12</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <a href="#"><img src="images/menu/menu1.jpg" alt="Menu image 3"></a>
+                            <p><a href="#">Picture Link</a></p>
+                            <p>Text text text text text.</p>
+                        </div>
+                        <div class="highlight">
+                            <a href="#"><img src="images/menu/menu2.jpg" alt="Menu image 4"></a>
+                            <p><a href="#">Picture Link</a></p>
+                            <p>Text text text text text.</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="">Menu3</a>
+                </li>
+                <li><a href="" class="single">Direct Menu Link</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - EgyptExcavation - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    <div id="content" role="main" class="wrapper clearfix ">
+        <!-- Breadcrumb-->
+        <ul class="breadcrumb">
+            <li>
+                <div class="dropdown">
+                    <a href="" data-toggle="dropdown" class="home dropdown-toggle needsclick"><i class="fa fa-home fa-lg"></i><span class="visuallyhidden">Home</span><i class="fa fa-caret-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="www.byu.edu">BYU Home</a></li>
+                        <li><a href="#">Home Page</a></li>
+                        <li><a href="#">Two Pages Above</a></li>
+                    </ul><i class="divider fa fa-angle-right"></i>
+                </div>
+            </li>
+            <li><a href="#">One page above</a><i class="divider fa fa-angle-right"></i></li>
+            <li class="active">Current Page</li>
+        </ul>
+        <h1>@ViewBag.Title</h1>
+        <br />
+        @RenderBody()
+    </div>
+
+        
+
+        <!--footer-->
+        <footer id="page-footer" role="contentinfo">
+            <div id="footer-links">
+                <div class="wrapper">
+                    <div class="col alpha">
+                        <h2>Footer Column 1</h2><a href="">Menu item 1</a><a href="">Menu item 2</a><a href="">Menu item 3</a><a href="">Menu item 4</a>
+                    </div>
+                    <div class="col">
+                        <h2>Footer Column 2</h2><a href="">Menu item 1</a><a href="">Menu item 2</a><a href="">Menu item 3</a><a href="">Menu item 4</a>
+                    </div>
+                    <div class="col double">
+                        <h2>Footer Double Column</h2>
+                        <div class="left alpha">
+                            <a href="">Left Link 1</a><a href="">Left Link 2</a><a href="">Left Link 3</a><a href="">Left Link 4</a>
+                        </div>
+                        <div class="right omega">
+                            <a href="">Right Link 1</a><a href="">Right Link 2</a><a href="">Right Link 3</a><a href="">Right Link 4</a>
+                        </div>
+                    </div>
+                    <div class="col omega">
+                        <h2>Footer Column 4</h2><a href="">Menu item 1</a><a href="">Menu item 2</a><a href="">Menu item 3</a><a href="">Menu item 4</a>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-bottom">
+                <div class="wrapper clearfix">
+                    <!--a#byu(href='http://byu.edu/') Brigham Young University--><a id="byui" href="http://byui.edu/" class="ir">BYU-Idaho</a><a id="byuh" href="http://byuh.edu/" class="ir">BYU-Hawaii</a><a id="ldsbc" href="http://www.ldsbc.edu/" class="ir">LDS Business College</a><a id="lds" href="http://lds.org/">The Church of Jesus Christ of Latter-day Saints</a>
+                </div>
+            </div>
+
+        </footer>
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+            @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
