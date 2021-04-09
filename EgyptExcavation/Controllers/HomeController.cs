@@ -35,6 +35,14 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult UploadFile()
+        {
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -902,7 +902,7 @@ nav.sidebar {
 /*** Main Content ***/
 .wrapper {
     resize: horizontal;
-    overflow-x: auto;
+
 }
 
 .wrapper .row {
