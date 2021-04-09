@@ -69,3 +69,39 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.row > .col-sm-2 {
+    display: flex;
+    flex: 0 0 25%;
+    max-width: 25%
+}
+
+.col-sm-2 {
+    -webkit-flex-wrap: nowrap !important;
+    -ms-flex-wrap: nowrap !important;
+    flex-wrap: nowrap !important;
+}
+
+.col-sm-2 {
+    display: flex;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+}
+
+.horizontal-scroll-wrapper {
+    width: 100px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform: rotate(-90deg) translateY(-100px);
+    transform-origin: right top;
+}
+
+    .horizontal-scroll-wrapper > div {
+        width: 100px;
+        height: 100px;
+        transform-origin: right top;
+    }

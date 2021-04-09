@@ -131,7 +131,7 @@ img {
 
 /** Correct overflow displayed oddly in IE 9. */
 svg:not(:root) {
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 /* ========================================================================== Figures ========================================================================== */
@@ -184,9 +184,9 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 /** 1. Address box sizing set to `content-box` in IE 8/9. 2. Remove excess padding in IE 8/9. */
 input[type="checkbox"], input[type="radio"] {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box; /* 1 */
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box; /* 1 */
     padding: 0; /* 2 */
 }
 
@@ -211,7 +211,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 
 /** 1. Remove default vertical scrollbar in IE 8/9. 2. Improve readability and alignment in all browsers. */
 textarea {
-    overflow: auto; /* 1 */
+    /*overflow: auto; */
     vertical-align: top; /* 2 */
 }
 
@@ -231,6 +231,7 @@ html, button, input, select, textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    resize:horizontal;
 }
 
 /* Remove text-shadow in selection highlight: h5bp.com/i These selection rule sets have to be separate. Customize the background color to match your design. */
@@ -268,7 +269,8 @@ fieldset {
 
 /* Allow only vertical resizing of textareas. */
 textarea {
-    resize: vertical;
+    /*resize: vertical;*/
+    resize: both;
 }
 
 /* ========================================================================== Chrome Frame prompt ========================================================================== */
@@ -285,7 +287,7 @@ textarea {
 .ir {
     background-color: transparent;
     border: 0;
-    overflow: hidden; /* IE 6/7 fallback */
+    /*overflow: hidden; /* IE 6/7 fallback */
     *text-indent: -9999px;
 }
 
@@ -297,13 +299,13 @@ textarea {
     }
 
 /* Hide from both screenreaders and browsers: h5bp.com/u */
-.hidden {
+/*.hidden {
     display: none !important;
     visibility: hidden;
 }
 
 /* Hide only visually, but have it available for screenreaders: h5bp.com/v */
-.visuallyhidden {
+/*.visuallyhidden {
     border: 0;
     clip: rect(0 0 0 0);
     height: 1px;
@@ -312,10 +314,10 @@ textarea {
     padding: 0;
     position: absolute;
     width: 1px;
-}
+}*/
 
     /* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
-    .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+ /*   .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
         clip: auto;
         height: auto;
         margin: 0;
@@ -324,24 +326,26 @@ textarea {
         width: auto;
     }
 
-/* Hide visually and from screenreaders, but maintain layout */
+/* Hide visually and from screenreaders, but maintain layout 
 .invisible {
     visibility: hidden;
 }
 
 /* Clearfix: contain floats  For modern browsers 1. The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document. Otherwise it causes space to appear at the top and bottom of elements that receive the `clearfix` class. 2. The use of `table` rather than `block` is only necessary if using `:before` to contain the top-margins of child elements. */
-.clearfix:before, .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+/*.clearfix:before, .clearfix:after {
+    /*content: " ";  1 
+    display: table; /* 2 
+    resize: horizontal;
 }
 
-.clearfix:after {
-    clear: both;
-}
+/*.clearfix:after {
+    /*clear: both;
+    resize:horizontal;} */
 
 /* For IE 6/7 only Include this rule to trigger hasLayout and contain floats. */
-.clearfix {
-    *zoom: 1;
+    .clearfix {
+    resize:horizontal;
+
 }
 
 /** Prettify **/
@@ -403,7 +407,7 @@ ol.linenums {
 /*** Base tags ***/
 html, body {
     width: 100%;
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
 }
 
     body em {
@@ -439,7 +443,7 @@ blockquote {
         line-height: .1em;
         vertical-align: -.4em;
         display: block;
-        position: absolute;
+        position:relative;
         top: 15px;
         left: 1px;
     }
@@ -897,15 +901,23 @@ nav.sidebar {
 
 /*** Main Content ***/
 .wrapper {
-    margin: 0;
+    resize: horizontal;
+    overflow-x: auto;
 }
+
+.wrapper .row {
+    white-space: nowrap
+}
+
 
 #content {
     padding: 1em 5% 2em;
+    resize: horizontal;
 }
 
     #content h1 {
         color: #025;
+        resize: horizontal;
     }
 
 #feature {
@@ -1130,7 +1142,7 @@ a.baseline, #calendar > strong, a.more {
     left: 0;
     padding-left: 73px;
     padding-right: 6px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
     letter-spacing: 2px;
     -moz-box-sizing: border-box;

@@ -326,18 +326,13 @@ textarea {
 }
 
 /* Clearfix: contain floats  For modern browsers 1. The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document. Otherwise it causes space to appear at the top and bottom of elements that receive the `clearfix` class. 2. The use of `table` rather than `block` is only necessary if using `:before` to contain the top-margins of child elements. */
-.clearfix:before, .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
+/*.clearfix:before, .clearfix:after {content: " ";display: table;  }*/
 
-.clearfix:after {
-    clear: both;
-}
+/*.clearfix:after {clear: both;}*/
 
 /* For IE 6/7 only Include this rule to trigger hasLayout and contain floats. */
 .clearfix {
-    *zoom: 1;
+   resize:horizontal;
 }
 
 /*!
@@ -563,6 +558,7 @@ html {
 
 body {
     background-color: #fff;
+    resize:horizontal;
 }
 
 body, button, input, select, textarea {
@@ -1195,18 +1191,16 @@ dd {
 }
 
 .dl-horizontal {
-    *zoom: 1;
+    resize:horizontal;
 }
 
     .dl-horizontal:before, .dl-horizontal:after {
         display: table;
-        content: "";
+        /*content: "";*/
         line-height: 0;
     }
 
-    .dl-horizontal:after {
-        clear: both;
-    }
+    /*.dl-horizontal:after {clear: both;}*/
 
     .dl-horizontal dt {
         float: left;
@@ -1215,7 +1209,7 @@ dd {
         text-align: right;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        /*white-space: nowrap;*/
     }
 
     .dl-horizontal dd {
@@ -1578,10 +1572,10 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
 }
 
 .clearfix {
-    *zoom: 1;
+    resize:horizontal;
 }
 
-    .clearfix:before, .clearfix:after {
+  /*  .clearfix:before, .clearfix:after {
         display: table;
         content: "";
         line-height: 0;
@@ -1589,7 +1583,7 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
 
     .clearfix:after {
         clear: both;
-    }
+    } */
 
 .hide-text {
     font: 0/0 a;
@@ -1603,9 +1597,9 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
     display: block;
     width: 100%;
     min-height: 30px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
 }
 
 /*!

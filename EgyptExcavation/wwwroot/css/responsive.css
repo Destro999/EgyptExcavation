@@ -208,9 +208,9 @@ dd {
         width: 160px;
         clear: left;
         text-align: right;
-        overflow: hidden;
+        /*overflow: hidden;*/
         text-overflow: ellipsis;
-        white-space: nowrap;
+        /*white-space: nowrap;*/
     }
 
     .dl-horizontal dd {
@@ -609,7 +609,7 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
         height: 1px;
         margin: 9px 1px;
         *margin: -5px 0 5px;
-        overflow: hidden;
+        /*overflow: hidden;*/
         background-color: #e5e5e5;
         border-bottom: 1px solid #fff;
     }
@@ -1356,11 +1356,11 @@ button.btn, input[type="submit"].btn {
     position: fixed;
 }
 
-.clearfix {
-    *zoom: 1;
+/*.clearfix {
+    resize:horizontal;
 }
 
-    .clearfix:before, .clearfix:after {
+/*    .clearfix:before, .clearfix:after {
         display: table;
         content: "";
         line-height: 0;
@@ -1368,7 +1368,7 @@ button.btn, input[type="submit"].btn {
 
     .clearfix:after {
         clear: both;
-    }
+    }*/
 
 .hide-text {
     font: 0/0 a;
@@ -3484,7 +3484,7 @@ width: 160px;
                 background: none;
                 border: none;
                 text-indent: -1000px;
-                overflow: hidden;
+                /*overflow: hidden;*/
                 margin: 0 0 0 -5px;
                 padding: 8px 1.5em;
             }
@@ -3695,7 +3695,7 @@ width: 160px;
 *
 */
 html {
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     overflow-y: scroll;
 }
 
@@ -3705,11 +3705,12 @@ body {
     transition: left, height 0.2s ease;
     position: relative;
     left: 0;
-    overflow: hidden;
+   /* overflow: hidden;*/
 }
 
 #content {
     background-color: white;
+    resize:horizontal;
 }
 
 #main-header, #content, #page-footer, #search-menu {
@@ -3840,7 +3841,7 @@ body.sideNav {
         padding: 0;
         border-bottom: 1px solid #025;
         border-top: 1px solid #147;
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 
         #primary-nav li.left, #secondary-nav li.left, #primary-nav li.right, #secondary-nav li.right {
@@ -4354,7 +4355,7 @@ body.sideNav {
     height: auto;
     list-style: none; /* Prevent FOUC (see FAQ page) and keep things readable if javascript is disabled */
     overflow-y: auto;
-    overflow-x: hidden;
+   /* overflow-x: hidden;*/
 }
 
 /****************** SET STYLING HERE *****************
@@ -4389,25 +4390,25 @@ body.sideNav {
 
 /*********************** COMMON SLIDER STYLING **********************/
 /* Overall Wrapper */
-.anythingSlider {
-    display: block;
+/*.anythingSlider {
+    display:contents;
     overflow: visible !important;
     position: relative;
 }
 
     /* anythingSlider viewport window */
-    .anythingSlider .anythingWindow {
-        overflow: hidden;
+   /* .anythingSlider .anythingWindow {
+        /*overflow: hidden;
         position: relative;
         width: 100%;
         height: 100%;
     }
 
-    /* anythingSlider base (original element) */
+    anythingSlider base (original element) 
     .anythingSlider .anythingBase {
         background: transparent;
         list-style: none;
-        position: absolute;
+        position: relative;
         overflow: visible !important;
         top: 0;
         left: 0;
@@ -4416,32 +4417,32 @@ body.sideNav {
     }
 
     /* Navigation arrow text; indent moved to span inside "a", for IE7; apparently, a negative text-indent on an "a" link moves the link as well as the text */
-    .anythingSlider .arrow span {
-        display: block;
-        visibility: hidden;
+   /* .anythingSlider .arrow span {
+        display: contents;
+        /*visibility: hidden;
     }
 
     /* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
-    .anythingSlider .arrow.disabled {
+   /* .anythingSlider .arrow.disabled {
         display: none;
     }
 
     /* all panels inside the slider; horizontal mode */
-    .anythingSlider .panel {
+   /* .anythingSlider .panel {
         background: transparent;
-        display: block;
-        overflow: hidden;
+        display: ruby-base-container;
+        /*overflow: hidden;
         float: left;
         padding: 0;
         margin: 0;
-    }
+    }*/
 
-    /* vertical mode */
+    /* vertical mode 
     .anythingSlider .vertical .panel {
         float: none;
     }
 
-    /* fade mode */
+    /* fade mode 
     .anythingSlider .fade .panel {
         float: none;
         position: absolute;
@@ -4450,13 +4451,13 @@ body.sideNav {
         z-index: 0;
     }
 
-    /* fade mode active page - visible & on top */
+    /* fade mode active page - visible & on top 
     .anythingSlider .fade .activePage {
         z-index: 1;
     }
 
     /*********************** RTL STYLING **********************/
-    /* slider autoplay right-to-left, reverse order of nav links to look better */
+    /* slider autoplay right-to-left, reverse order of nav links to look better 
     .anythingSlider.rtl .anythingWindow {
         direction: ltr;
         unicode-bidi: bidi-override;
@@ -4533,7 +4534,6 @@ body.sideNav {
         .anythingSlider .arrow:after {
             pointer-events: none;
             display: block;
-            content: "";
             color: white;
             text-indent: 0;
             font-size: 50px;
@@ -4614,7 +4614,7 @@ body.sideNav {
         height: 20px;
         background-color: black;
         text-indent: -999em;
-        overflow: hidden;
+        /*overflow: hidden;*/
         opacity: .15;
     }
 
@@ -4987,18 +4987,17 @@ body.sideNav {
     }
 
     .wrapper {
-        max-width: 939.72px;
-        margin: 0 auto;
+        resize:horizontal;
     }
 
     #content {
-        position: relative;
+        /*position: relative;
         min-height: 100%;
         width: 939.72px;
         padding-left: 103.14px;
         padding-right: 103.14px;
         -webkit-box-shadow: 0 0 30px 0px rgba(222, 222, 222, 0.7);
-        box-shadow: 0 0 30px 0px rgba(222, 222, 222, 0.7);
+        box-shadow: 0 0 30px 0px rgba(222, 222, 222, 0.7);*/
     }
 
         #content.sidebar-navigation {
