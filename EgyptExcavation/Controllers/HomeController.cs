@@ -13,6 +13,8 @@ namespace EgyptExcavation.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public int PictureSize = 5;
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -24,6 +26,11 @@ namespace EgyptExcavation.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Gallery()
         {
             return View();
         }
