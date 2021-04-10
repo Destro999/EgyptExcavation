@@ -91,7 +91,7 @@ body {
     flex-direction: row !important;
 }
 
-.horizontal-scroll-wrapper {
+.card border-dark mx-auto align-items-center {
     width: 100px;
     height: 300px;
     overflow-y: auto;
@@ -100,8 +100,15 @@ body {
     transform-origin: right top;
 }
 
-    .horizontal-scroll-wrapper > div {
+    .card border-dark mx-auto align-items-center > div {
         width: 100px;
         height: 100px;
         transform-origin: right top;
     }
+
+
+.panel-img-top {
+    max-width: 100%;
+    height: auto;
+}
+    
