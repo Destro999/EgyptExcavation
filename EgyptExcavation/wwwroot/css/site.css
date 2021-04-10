@@ -111,4 +111,8 @@ body {
     max-width: 100%;
     height: auto;
 }
+
+.card-summary {
+     width:100%;
+}
     
