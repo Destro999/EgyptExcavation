@@ -716,8 +716,10 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-
-
+@foreach (var sample in ViewBag.Samples)
+{
+    <a asp-action="Details" asp-controller="BiologicalSamples" asp-route-id="@sample.BiologicalId" class="btn btn-success">Biological Sample #@(ViewBag.Samples.IndexOf(sample) + 1)</a>
+}
 
 
 
