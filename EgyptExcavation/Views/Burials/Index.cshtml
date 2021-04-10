@@ -72,37 +72,42 @@
     </div>
     <!--End of filters-->
     <!--Contains cards-->
-    <div class="col-9">
-        <div class="text-center">
-            <h1>Browse Burials</h1>
+   
+<div class="col-9">
+    
+    <div class="text-center">
+        <h1>Browse Burials</h1>
 
-            <p>
-                <a asp-action="Create">Create New</a>
-            </p>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        @if (Model.PageNumberingInfo.TotalNumItems == 0)
+        {
+            <div class="text-center"><p>No records match the filters you have entered.</p></div>
+        }
+        @foreach (var burial in Model.Burials)
+        {
+            <br />
+            <div class="card border-dark mx-auto align-items-center" style="width:40rem;">
+                @if (burial.HasPhoto)
+                {
+                    <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
+                }
 
-            @foreach (var burial in Model.Burials)
-            {
-                <br />
-                <div class="card border-dark mx-auto align-items-center" style="width:40rem;">
-                    @if (burial.HasPhoto)
-                    {
-                        <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
-                    }
-
-                    <div class="card-body">
-                        <h5 class="card-title">@burial.BurialId</h5>
-                        <p class="card-text">@burial.BurialSituation</p>
-                        <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
-                    </div>
+                <div class="card-body">
+                    <h5 class="card-title">@burial.BurialId</h5>
+                    <p class="card-text">@burial.BurialSituation</p>
+                    <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
                 </div>
-            }
-
-
-            <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="" page-class-normal="btn" page-class-selected=" btn btn-primary" class="m-1">
-
             </div>
+        }
+
+
+        <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="" page-class-normal="btn" page-class-selected=" btn btn-primary" page-url-filterid="@ViewBag.Filters.FilterString" class="m-1">
+
         </div>
     </div>
+</div>
     
 </div>
 

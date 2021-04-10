@@ -81,7 +81,7 @@ namespace EgyptExcavation
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
                     // This will need to be adjusted to account for when filters are applied
-                    TotalNumItems = _context.Burial.Count()
+                    TotalNumItems = query.Count()
                 }
             };
             return View(browseViewModel);
