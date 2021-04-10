@@ -39,7 +39,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -47,7 +47,7 @@ namespace EgyptExcavation
             }
 
             var burial = await _context.Burial
-                .FirstOrDefaultAsync(m => m.BurialId == id);
+                .FirstOrDefaultAsync(m => m.BurialIdInt == id);
             if (burial == null)
             {
                 return NotFound();
@@ -79,7 +79,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -99,9 +99,9 @@ namespace EgyptExcavation
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
+        public async Task<IActionResult> Edit(int id, [Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
-            if (id != burial.BurialId)
+            if (id != burial.BurialIdInt)
             {
                 return NotFound();
             }
@@ -115,7 +115,7 @@ namespace EgyptExcavation
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BurialExists(burial.BurialId))
+                    if (!BurialExists(burial.BurialIdInt))
                     {
                         return NotFound();
                     }
@@ -130,7 +130,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -138,7 +138,7 @@ namespace EgyptExcavation
             }
 
             var burial = await _context.Burial
-                .FirstOrDefaultAsync(m => m.BurialId == id);
+                .FirstOrDefaultAsync(m => m.BurialIdInt == id);
             if (burial == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace EgyptExcavation
         // POST: Burials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var burial = await _context.Burial.FindAsync(id);
             _context.Burial.Remove(burial);
@@ -158,9 +158,9 @@ namespace EgyptExcavation
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BurialExists(string id)
+        private bool BurialExists(int id)
         {
-            return _context.Burial.Any(e => e.BurialId == id);
+            return _context.Burial.Any(e => e.BurialIdInt == id);
         }
     }
 }

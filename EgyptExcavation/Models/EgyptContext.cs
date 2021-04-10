@@ -437,6 +437,9 @@ namespace EgyptExcavation.Models
                 entity.Property(e => e.ZygomaticCrest)
                     .HasColumnName("zygomatic_crest")
                     .HasColumnType("ntext");
+                // Jonah added this and it works!
+                entity.Property(e => e.BurialIdInt)
+                    .HasColumnName("burial_id_int");
             });
 
             modelBuilder.Entity<C14>(entity =>
