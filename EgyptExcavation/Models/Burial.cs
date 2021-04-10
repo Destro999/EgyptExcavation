@@ -94,5 +94,11 @@ namespace EgyptExcavation.Models
         public string BurialPreservation { get; set; }
         [Key]
         public int BurialIdInt { get; set; }
+        public bool HasPhoto { get; set; }
+
+        public string GetPhotoPath ()
+        {
+            return this.BurialIdInt.ToString() + ".jpg";
+        }
     }
 }
