@@ -19,3 +19,8 @@ img {
 .mySlides {
     display: none;
 }
+
+.logo {
+    color: white;
+    font-family: 'Palatino Linotype';
+}

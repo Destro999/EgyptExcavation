@@ -4050,7 +4050,8 @@ body.sideNav {
     }
 
         #header-top a.sign-in {
-            right: 262px;
+/*            right: 262px;*/
+              right: -300px;
         }
 
     #search-menu {
