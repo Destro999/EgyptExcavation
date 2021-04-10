@@ -105,3 +105,10 @@ body {
         height: 100px;
         transform-origin: right top;
     }
+
+
+.panel-img-top {
+    max-width: 100%;
+    height: auto;
+}
+    
