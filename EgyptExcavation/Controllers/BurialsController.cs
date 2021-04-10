@@ -34,7 +34,13 @@ namespace EgyptExcavation
             ViewBag.SampleTaken = _context.Burial.Select(y => y.SampleTaken).Distinct().ToList();
             ViewBag.AgeCode = _context.Burial.Select(y => y.AgeCode).Distinct().ToList();
             ViewBag.HeadDirection = _context.Burial.Select(y => y.HeadDirection).Distinct().ToList();
-            ViewBag.YearFound = _context.Burial.Select(y => y.YearFound).Distinct().ToList();
+            ViewBag.YearFound = _context.Burial.Select(y => y.YearFound).Distinct().OrderBy(x => x).ToList();
+
+            ViewBag.SexFilterValues = Filters.SexFilterValues;
+            ViewBag.HairColorFilterValues = Filters.HairColorFilterValues;
+            ViewBag.SampleTakenFilterValues = Filters.SampleTakenFilterValues;
+            ViewBag.AgeCodeFilterValues = Filters.AgeCodeFilterValues;
+            ViewBag.HeadDirectionFilterValues = Filters.HeadDirectionFilterValues;
 
             IQueryable<Burial> query = _context.Burial;
 

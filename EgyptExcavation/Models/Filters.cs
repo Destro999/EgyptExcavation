@@ -37,5 +37,54 @@ namespace EgyptExcavation.Models
         public bool HasAgeCode => AgeCode.ToLower() != "all";
         public bool HasHeadDirection => HeadDirection.ToLower() != "all";
         public bool HasYearFound => YearFound.ToLower() != "all";
+
+        //Dictionaries to match DB values to what appears in the filters
+        public static Dictionary<string, string> SexFilterValues =>
+            new Dictionary<string, string>
+            {
+                {"S", "Sub-Adult" },
+                {"C", "Child" },
+                {"M", "Male" },
+                {"F", "Female" },
+                {"U", "Unknown" }
+            };
+
+        public static Dictionary<string, string> HairColorFilterValues =>
+            new Dictionary<string, string>
+            {
+                {"B", "Brown" },
+                {"R", "Red" },
+                {"K", "Black" },
+                {"D", "Blonde" },
+                {"A", "Red/Brown" },
+                {"U", "Unknown" }
+            };
+        public static Dictionary<string, string> SampleTakenFilterValues =>
+            new Dictionary<string, string>
+            {
+                {"FALSE", "False" },
+                {"TRUE", "True" },
+                {"", "Blank" },
+
+            };
+        public static Dictionary<string, string> AgeCodeFilterValues =>
+            new Dictionary<string, string>
+            {
+                {"N", "Newborn (0-1)" },
+                {"I", "Infant (1-3)" },
+                {"IN", "Infant (1-3)" },
+                {"C", "Child (3-15)" },
+                {"A", "Adult (15+)" },
+                {"U", "Unknown" }
+
+            };
+        public static Dictionary<string, string> HeadDirectionFilterValues =>
+            new Dictionary<string, string>
+            {
+                {"W", "West" },
+                {"E", "East" },
+                {"U", "Unknown" },
+                {"", "Blank" }
+            };
     }
 }
