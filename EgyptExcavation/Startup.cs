@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace EgyptExcavation
 {
@@ -31,6 +33,16 @@ namespace EgyptExcavation
             //    options.UseSqlServer(Configuration.GetConnectionString("EgyptExcavationContext")));
 
             services.AddDbContext<EgyptContext>(options => options.UseSqlite(Configuration["ConnectionStrings:EgyptExcavationDbConnection"]));
+
+            services.AddDbContext<IdentityContext>(opts =>
+                opts.UseSqlServer(Configuration[
+                    "ConnectionStrings:IdentityConnection"]));
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                 .AddDefaultUI()
+                 .AddEntityFrameworkStores<IdentityContext>()
+                 .AddDefaultTokenProviders();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
