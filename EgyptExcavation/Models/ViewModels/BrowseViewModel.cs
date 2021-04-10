@@ -13,6 +13,8 @@ namespace EgyptExcavation.Models.ViewModels
         // Not sure if a List or an IEnumerable is right here
         public IEnumerable<Burial> Burials { get; set; }
         public PageNumberingInfo PageNumberingInfo { get; set; }
+
+        public IEnumerable<BiologicalSample> BiologicalSamples { get; set; }
         // Below, we will also want to include any filtering info that would be included in the URL route. EX from BowlingLeague-
         // public string TeamName { get; set; }
     }

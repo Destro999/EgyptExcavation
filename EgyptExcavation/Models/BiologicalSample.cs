@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -9,6 +10,8 @@ namespace EgyptExcavation.Models
 {
     public partial class BiologicalSample
     {
+        [Key]
+        public int BiologicalId { get; set; }
         public string RackNumber { get; set; }
         public string BagNumber { get; set; }
         public string BurialId { get; set; }

@@ -37,7 +37,11 @@ namespace EgyptExcavation.Models
         {
             modelBuilder.Entity<BiologicalSample>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
+
+                //Will this new column work?
+                entity.Property(e => e.BiologicalId)
+                    .HasColumnName("BiologicalId");
 
                 entity.Property(e => e.BagNumber)
                     .HasColumnName("bag_number")
