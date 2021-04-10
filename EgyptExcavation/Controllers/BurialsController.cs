@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using EgyptExcavation.Models;
 using EgyptExcavation.Models.ViewModels;
 
-namespace EgyptExcavation
+namespace EgyptExcavation 
 {
     public class BurialsController : Controller
     {

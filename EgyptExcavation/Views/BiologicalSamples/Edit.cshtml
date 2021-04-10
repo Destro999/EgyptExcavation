@@ -23,16 +23,18 @@
                             <div class="row">
                                 <div class="col-3">
                                     <ul class="list-group">
-                                        <li class="form-group">
+                                        <li class="list-group">
                                             <label asp-for="BurialId" class="control-label"></label>
                                             <input asp-for="BurialId" class="form-control" />
                                             <span asp-validation-for="BurialId" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="RackNumber" class="control-label"></label>
                                             <input asp-for="RackNumber" class="form-control" />
                                             <span asp-validation-for="RackNumber" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="BagNumber" class="control-label"></label>
                                             <input asp-for="BagNumber" class="form-control" />
@@ -42,16 +44,18 @@
                                 </div>
                                 <div class="col-3">
                                     <ul class="list-group">
-                                        <li class="form-group list-group-item">
+                                        <li class="list-group">
                                             <label asp-for="LowPairNs" class="control-label"></label>
                                             <input asp-for="LowPairNs" class="form-control" />
                                             <span asp-validation-for="LowPairNs" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="HighPairNs" class="control-label"></label>
                                             <input asp-for="HighPairNs" class="form-control" />
                                             <span asp-validation-for="HighPairNs" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="BurialLocationNs" class="control-label"></label>
                                             <input asp-for="BurialLocationNs" class="form-control" />
@@ -69,11 +73,13 @@
                                             <input asp-for="LowPairEw" class="form-control" />
                                             <span asp-validation-for="LowPairEw" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="HighPairEw" class="control-label"></label>
                                             <input asp-for="HighPairEw" class="form-control" />
                                             <span asp-validation-for="HighPairEw" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="BurialLocationEw" class="control-label"></label>
                                             <input asp-for="BurialLocationEw" class="form-control" />
@@ -88,11 +94,13 @@
                                             <input asp-for="BurialSubplot" class="form-control" />
                                             <span asp-validation-for="BurialSubplot" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="BurialNumber" class="control-label"></label>
                                             <input asp-for="BurialNumber" class="form-control" />
                                             <span asp-validation-for="BurialNumber" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="ClusterNumber" class="control-label"></label>
                                             <input asp-for="ClusterNumber" class="form-control" />
@@ -122,11 +130,13 @@
                                             <input asp-for="Date" class="form-control" />
                                             <span asp-validation-for="Date" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="PreviouslySampled" class="control-label"></label>
                                             <input asp-for="PreviouslySampled" class="form-control" />
                                             <span asp-validation-for="PreviouslySampled" class="text-danger"></span>
                                         </li>
+                                        <br />
                                         <li class="list-group">
                                             <label asp-for="Initials" class="control-label"></label>
                                             <input asp-for="Initials" class="form-control" />
@@ -136,14 +146,15 @@
                                 </div>
                                 <div class="col-3">
                                     <ul class="list-group">
-                                        <li class="form-group list-group-item">
+                                        <li class="list-group">
                                             <label asp-for="Column17" class="control-label"></label>
                                             <input asp-for="Column17" class="form-control" />
                                             <span asp-validation-for="Column17" class="text-danger"></span>
                                         </li>
-                                        <li class="form-group list-group-item">
+                                        <br />
+                                        <li class="list-group">
                                             <label asp-for="Notes" class="control-label"></label>
-                                            <textarea rows="4" asp-for="Notes" class="form-control" />
+                                            <input rows="4" asp-for="Notes" class="form-control" />
                                             <span asp-validation-for="Notes" class="text-danger"></span>
                                         </li>
                                     </ul>
@@ -151,6 +162,7 @@
                             </div>
                         </div>
                     </div>
+                    <input asp-for="BiologicalId" class="form-control" type="hidden" />
                     <br />
                     <div class="form-group">
                         <input type="submit" value="Save" class="btn btn-primary" />
