@@ -21,12 +21,61 @@ namespace EgyptExcavation
 
         // GET: Burials
         // Edited by Jonah to include Pagination
-        public async Task<IActionResult> Index(int pageNum = 0)
+        public IActionResult Index(string filterId, int pageNum = 0)
         {
             int pageSize = 5;
+
+            //filters
+            var filters = new Filters(filterId);
+            ViewBag.Filters = filters;
+            ViewBag.BurialSubplots = _context.Burial.Select(y => y.BurialSubplot).Distinct().ToList();
+            ViewBag.Sex = _context.Burial.Select(y => y.GenderBodyCol).Distinct().ToList();
+            ViewBag.HairColor = _context.Burial.Select(y => y.HairColor).Distinct().ToList();
+            ViewBag.SampleTaken = _context.Burial.Select(y => y.SampleTaken).Distinct().ToList();
+            ViewBag.AgeCode = _context.Burial.Select(y => y.AgeCode).Distinct().ToList();
+            ViewBag.HeadDirection = _context.Burial.Select(y => y.HeadDirection).Distinct().ToList();
+            ViewBag.YearFound = _context.Burial.Select(y => y.YearFound).Distinct().ToList();
+
+            IQueryable<Burial> query = _context.Burial;
+
+            if (filters.HasBurialSubplot)
+            {
+                query = query.Where(b => b.BurialSubplot == filters.BurialSubplot);
+            }
+            if (filters.HasSex)
+            {
+                query = query.Where(b => b.GenderBodyCol == filters.Sex);
+            }
+            if (filters.HasHairColor)
+            {
+                query = query.Where(b => b.HairColor == filters.HairColor);
+            }
+            if (filters.HasSampleTaken)
+            {
+                query = query.Where(b => b.SampleTaken == filters.SampleTaken);
+            }
+            if (filters.HasAgeCode)
+            {
+                query = query.Where(b => b.AgeCode == filters.AgeCode);
+            }
+            if (filters.HasHeadDirection)
+            {
+                query = query.Where(b => b.HeadDirection == filters.HeadDirection);
+            }
+            if (filters.HasYearFound)
+            {
+                query = query.Where(b => b.YearFound == filters.YearFound);
+            }
+
+            var burials = query.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
+
+
+
+
             BrowseViewModel browseViewModel = new BrowseViewModel
             {
-                Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
+                //Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
+                Burials = burials,
                 PageNumberingInfo = new PageNumberingInfo
                 {
                     NumItemsPerPage = pageSize,
@@ -37,6 +86,16 @@ namespace EgyptExcavation
             };
             return View(browseViewModel);
         }
+
+
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
+        {
+            string newId = string.Join('-', filter);
+            return RedirectToAction("Index", new { filterId = newId }); //Might have to adjust "ID" here, not sure if that name is by convention
+        }
+
+
 
         //This will be referenced in the BurialFilterViewComponent to return the Burials Index view, but filtered with the form data
         public IActionResult IndexFiltered(int pageNum = 0)
@@ -117,7 +176,7 @@ namespace EgyptExcavation
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
+        public async Task<IActionResult> Edit(int id, [Bind("BurialIdInt,BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
             if (id != burial.BurialIdInt)
             {
