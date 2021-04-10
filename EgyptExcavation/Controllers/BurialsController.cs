@@ -26,7 +26,7 @@ namespace EgyptExcavation
             int pageSize = 5;
             BrowseViewModel browseViewModel = new BrowseViewModel
             {
-                Burials = _context.Burial.Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
+                Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
                 PageNumberingInfo = new PageNumberingInfo
                 {
                     NumItemsPerPage = pageSize,

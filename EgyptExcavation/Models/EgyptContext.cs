@@ -440,6 +440,8 @@ namespace EgyptExcavation.Models
                 // Jonah added this and it works!
                 entity.Property(e => e.BurialIdInt)
                     .HasColumnName("burial_id_int");
+                entity.Property(e => e.HasPhoto)
+                    .HasColumnName("has_photo");
             });
 
             modelBuilder.Entity<C14>(entity =>
