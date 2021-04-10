@@ -18,7 +18,7 @@
             @foreach (var burial in Model.Burials)
             {
                 <br />
-                <div class="card border-dark mx-auto" style="width:60rem;">
+                <div class="card border-dark mx-auto align-items-center" style="width:40rem;">
                     @if (burial.HasPhoto)
                     {
                         <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
