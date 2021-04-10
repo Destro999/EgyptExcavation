@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
-namespace EgyptExcavation.Migrations
+namespace WebApplication1.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
@@ -51,7 +52,7 @@ namespace EgyptExcavation.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -72,7 +73,7 @@ namespace EgyptExcavation.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -92,8 +93,8 @@ namespace EgyptExcavation.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -137,8 +138,8 @@ namespace EgyptExcavation.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

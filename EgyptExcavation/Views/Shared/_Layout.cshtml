@@ -17,7 +17,8 @@
 
     <header id="main-header" role="banner">
         <div id="header-top" class="wrapper">
-            <div style="padding:2%" class ="logo" id="logo">
+            <div style="padding:2%" class="logo" id="logo">
+
                 <a href="http://www.byu.edu/" title="Home" rel="home">
                     <img src="https://religion.byu.edu/sites/default/themes/7.x-old/logo.png" alt="BYU Logo">
                 </a>
@@ -27,6 +28,7 @@
                 <div style="padding-right:5%; padding-top:2%">
                     <a asp-controller="Role" asp-action="Index" class="sign-in button">Sign in</a>
                 </div>
+
             </div>
             <!--search
     <form class="d-flex">
@@ -41,6 +43,7 @@
     <div class="nav-container">
         <!-- Primary Nav-->
         <nav id="primary-nav" role="navigation">
+            <partial name="_LoginPartial" />
             <ul>
                 <li> <a href="#" class="single current">Current tab</a></li>
                 <li>
@@ -48,33 +51,33 @@
                 </li>
                 <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
                 <!--
-    <div class="mega">
-        <ul class="links">
-            <li class="featured">
-                <ul>
-                    <li><a asp-controller="burial" asp-action="Index">Burial</a></li>
-                    <li><a href="">Featured Link 2</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Menu item 1</a></li>
-            <li>
-                <a href="#">Menu item 2</a>
-                <ul class="sublinks">
-                    <li><a href="">Submenu item 1</a></li>
-                    <li><a href="">Submenu item 2</a></li>
-                    <li><a href="">Submenu item 3</a></li>
-                </ul>
-            </li>
-            <li><a href="">Menu item 3</a></li>
-            <li><a href="">Menu item 4</a></li>
-            <li><a href="">Menu item 5</a></li>
-            <li><a href="">Menu item 6</a></li>
-        </ul>
-    </div> -->
+        <div class="mega">
+            <ul class="links">
+                <li class="featured">
+                    <ul>
+                        <li><a asp-controller="burial" asp-action="Index">Burial</a></li>
+                        <li><a href="">Featured Link 2</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Menu item 1</a></li>
+                <li>
+                    <a href="#">Menu item 2</a>
+                    <ul class="sublinks">
+                        <li><a href="">Submenu item 1</a></li>
+                        <li><a href="">Submenu item 2</a></li>
+                        <li><a href="">Submenu item 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Menu item 3</a></li>
+                <li><a href="">Menu item 4</a></li>
+                <li><a href="">Menu item 5</a></li>
+                <li><a href="">Menu item 6</a></li>
+            </ul>
+        </div> -->
                 <!--
-    <li>
-        <a href="">Menu3</a>
-    </li> -->
+        <li>
+            <a href="">Menu3</a>
+        </li> -->
                 <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
                 <li><a asp-controller="Home" asp-action="UploadFile">Upload</a></li>
             </ul>
