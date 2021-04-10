@@ -38,6 +38,24 @@ namespace EgyptExcavation
             return View(browseViewModel);
         }
 
+        //This will be referenced in the BurialFilterViewComponent to return the Burials Index view, but filtered with the form data
+        public IActionResult IndexFiltered(int pageNum = 0)
+        {
+            int pageSize = 5;
+            BrowseViewModel browseViewModel = new BrowseViewModel
+            {
+                Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
+                PageNumberingInfo = new PageNumberingInfo
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+                    // This will need to be adjusted to account for when filters are applied
+                    TotalNumItems = _context.Burial.Count()
+                }
+            };
+            return View("Index");
+        }
+
         // GET: Burials/Details/5
         public async Task<IActionResult> Details(int id)
         {
