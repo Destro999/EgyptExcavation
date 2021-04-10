@@ -4,40 +4,110 @@
 }
 
 <div class="row">
+    <!-- Contains all the filters!-->
     <div class="col-3">
-        <vc:burial-filter />
-    </div>
-    <div class="col-9">
-        <div class="text-center">
-            <h1>Browse Burials</h1>
+        <form asp-action="Filter" method="post">
 
-            <p>
-                <a asp-action="Create">Create New</a>
-            </p>
-
-            @foreach (var burial in Model.Burials)
-            {
-                <br />
-                <div class="card border-dark mx-auto align-items-center" style="width:40rem;">
-                    @if (burial.HasPhoto)
-                    {
-                        <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
-                    }
-
-                    <div class="card-body">
-                        <h5 class="card-title">@burial.BurialId</h5>
-                        <p class="card-text">@burial.BurialSituation</p>
-                        <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
-                    </div>
-                </div>
-            }
-
-
-            <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="" page-class-normal="btn" page-class-selected=" btn btn-primary" class="m-1">
-
+            <div class="form-group">
+                <label>Burial Subplot:</label>
+                <select name="filter" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.BurialSubplots, ViewBag.Filters.BurialSubplot))">
+                    <option value="all">All</option>
+                </select>
             </div>
+         
+        <div class="form-group">
+            <label>Sex:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.Sex, ViewBag.Filters.Sex))">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Hair Color:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.HairColor, ViewBag.Filters.HairColor))">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Sample Taken:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.SampleTaken, ViewBag.Filters.SampleTaken))">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Age:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.AgeCode, ViewBag.Filters.AgeCode))">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Head Direction:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.HeadDirection, ViewBag.Filters.HeadDirection))">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Year Found:</label>
+            <select name="filter" class="form-control"
+                    asp-items="@(new SelectList(ViewBag.YearFound, ViewBag.Filters.YearFound))">
+                <option value="all">All</option>
+            </select>
+        </div>
+        
+            <button type="submit" class="btn btn-primary">Filter</button>
+
+            <a asp-action="Index" asp-route-filterid="" class="btn btn-primary">Clear</a>
+
+        </form>
+    </div>
+    <!--End of filters-->
+    <!--Contains cards-->
+   
+<div class="col-9">
+    
+    <div class="text-center">
+        <h1>Browse Burials</h1>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        @if (Model.PageNumberingInfo.TotalNumItems == 0)
+        {
+            <div class="text-center"><p>No records match the filters you have entered.</p></div>
+        }
+        @foreach (var burial in Model.Burials)
+        {
+            <br />
+            <div class="card border-dark mx-auto align-items-center" style="width:40rem;">
+                @if (burial.HasPhoto)
+                {
+                    <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
+                }
+
+                <div class="card-body">
+                    <h5 class="card-title">@burial.BurialId</h5>
+                    <p class="card-text">@burial.BurialSituation</p>
+                    <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        }
+
+
+        <div page-info="@Model.PageNumberingInfo" page-classes-enabled="true" page-class="" page-class-normal="btn" page-class-selected=" btn btn-primary" page-url-filterid="@ViewBag.Filters.FilterString" class="m-1">
+
         </div>
     </div>
+</div>
     
 </div>
 
