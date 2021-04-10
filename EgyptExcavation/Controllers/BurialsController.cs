@@ -19,6 +19,7 @@ namespace EgyptExcavation
             _context = context;
         }
 
+
         // GET: Burials
         // Edited by Jonah to include Pagination
         public IActionResult Index(string filterId, int pageNum = 0)
@@ -68,6 +69,7 @@ namespace EgyptExcavation
             }
 
             var burials = query.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
+            
 
 
 
@@ -122,8 +124,6 @@ namespace EgyptExcavation
             {
                 return NotFound();
             }
-
-            
 
             var burial = await _context.Burial
                 .FirstOrDefaultAsync(m => m.BurialIdInt == id);
