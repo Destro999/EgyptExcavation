@@ -19,7 +19,7 @@
         <div class="form-group">
             <label>Sex:</label>
             <select name="filter" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.Sex, ViewBag.Filters.Sex))">
+                    asp-items="@(new SelectList(ViewBag.SexFilterValues,"Key", "Value", ViewBag.Filters.Sex))">
                 <option value="all">All</option>
             </select>
         </div>
@@ -27,7 +27,7 @@
         <div class="form-group">
             <label>Hair Color:</label>
             <select name="filter" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.HairColor, ViewBag.Filters.HairColor))">
+                    asp-items="@(new SelectList(ViewBag.HairColorFilterValues, "Key", "Value", ViewBag.Filters.HairColor))">
                 <option value="all">All</option>
             </select>
         </div>
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label>Sample Taken:</label>
             <select name="filter" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.SampleTaken, ViewBag.Filters.SampleTaken))">
+                    asp-items="@(new SelectList(ViewBag.SampleTakenFilterValues, "Key", "Value", ViewBag.Filters.SampleTaken))">
                 <option value="all">All</option>
             </select>
         </div>
@@ -43,7 +43,7 @@
         <div class="form-group">
             <label>Age:</label>
             <select name="filter" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.AgeCode, ViewBag.Filters.AgeCode))">
+                    asp-items="@(new SelectList(ViewBag.AgeCodeFilterValues, "Key", "Value", ViewBag.Filters.AgeCode))">
                 <option value="all">All</option>
             </select>
         </div>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label>Head Direction:</label>
             <select name="filter" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.HeadDirection, ViewBag.Filters.HeadDirection))">
+                    asp-items="@(new SelectList(ViewBag.HeadDirectionFilterValues, "Key", "Value", ViewBag.Filters.HeadDirection))">
                 <option value="all">All</option>
             </select>
         </div>
