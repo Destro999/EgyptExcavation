@@ -64,6 +64,8 @@ namespace EgyptExcavation
                 return NotFound();
             }
 
+            
+
             var burial = await _context.Burial
                 .FirstOrDefaultAsync(m => m.BurialIdInt == id);
             if (burial == null)
@@ -87,6 +89,7 @@ namespace EgyptExcavation
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(burial);
