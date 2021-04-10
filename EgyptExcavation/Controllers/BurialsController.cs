@@ -19,6 +19,7 @@ namespace EgyptExcavation
             _context = context;
         }
 
+
         // GET: Burials
         // Edited by Jonah to include Pagination
         public IActionResult Index(string filterId, int pageNum = 0)
@@ -34,7 +35,13 @@ namespace EgyptExcavation
             ViewBag.SampleTaken = _context.Burial.Select(y => y.SampleTaken).Distinct().ToList();
             ViewBag.AgeCode = _context.Burial.Select(y => y.AgeCode).Distinct().ToList();
             ViewBag.HeadDirection = _context.Burial.Select(y => y.HeadDirection).Distinct().ToList();
-            ViewBag.YearFound = _context.Burial.Select(y => y.YearFound).Distinct().ToList();
+            ViewBag.YearFound = _context.Burial.Select(y => y.YearFound).Distinct().OrderBy(x => x).ToList();
+
+            ViewBag.SexFilterValues = Filters.SexFilterValues;
+            ViewBag.HairColorFilterValues = Filters.HairColorFilterValues;
+            ViewBag.SampleTakenFilterValues = Filters.SampleTakenFilterValues;
+            ViewBag.AgeCodeFilterValues = Filters.AgeCodeFilterValues;
+            ViewBag.HeadDirectionFilterValues = Filters.HeadDirectionFilterValues;
 
             IQueryable<Burial> query = _context.Burial;
 
@@ -68,6 +75,7 @@ namespace EgyptExcavation
             }
 
             var burials = query.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
+            
 
 
 
@@ -81,7 +89,7 @@ namespace EgyptExcavation
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
                     // This will need to be adjusted to account for when filters are applied
-                    TotalNumItems = _context.Burial.Count()
+                    TotalNumItems = query.Count()
                 }
             };
             return View(browseViewModel);
@@ -146,6 +154,7 @@ namespace EgyptExcavation
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(burial);
