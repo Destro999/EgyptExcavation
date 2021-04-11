@@ -44,13 +44,21 @@
         <nav id="primary-nav" role="navigation">
             
             <ul>
-                <li> <a href="#" class="single current">Current tab</a></li>
-                <li>
-                    <a asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
-                <!--
-    <div class="mega">
+                @*<li> <a href="#" class="single current">Current tab</a></li>*@
+
+             <li><a onclick="highlight" class="current" id="Home" asp-controller="Home" asp-action="Index">Home</a></li>
+
+             <li><a onclick="highlight" class="current" id="Burials" asp-controller="Burials" asp-action="Index">Burial</a></li>
+
+             <li><a onclick="highlight" class="current" id="Gallery" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+
+             <li><a onclick="highlight" class="current" id="Upload" asp-controller="Home" asp-action="UploadFile">Upload</a></li>
+
+             <li><a onclick="highlight" class="current" id="Role" asp-controller="Role" asp-action="Index">Roles</a></li>
+
+             <!--
+
+ <div class="mega">
         <ul class="links">
             <li class="featured">
                 <ul>
@@ -77,9 +85,6 @@
     <li>
         <a href="">Menu3</a>
     </li> -->
-                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                <li><a asp-controller="Home" asp-action="UploadFile">Upload</a></li>
-                <li><a asp-controller="Role" asp-action="Index">Roles</a></li>
             </ul>
         </nav>
     </div>

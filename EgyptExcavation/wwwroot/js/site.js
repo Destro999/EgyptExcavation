@@ -19,3 +19,16 @@ function showDivs(n) {
     }
     x[slideIndex - 1].style.display = "block";
 }
+
+
+//function highlight {
+//    var header = document.getElementById("myDIV");
+//    var btns = header.getElementsByClassName("btna");
+//    for (var i = 0; i < btns.length; i++) {
+//        btns[i].addEventListener("click", function () {
+//            var current = document.getElementsByClassName("Current");
+//            current[0].className = current[0].className.replace(" Current", "");
+//            this.className += " Current";
+//        });
+//    }
+//}
