@@ -12,6 +12,10 @@
     <link href="~/css/StyleSheet.css" rel="stylesheet" />
 </head>
 
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <body>
 
@@ -25,10 +29,12 @@
                 <div style="padding-left:2%; padding-top:1%">
                     <a asp-action="Index" asp-controller="Home"><h2 style="color: white; font-family: 'Palatino Linotype';">Fag el-Gamous</h2></a>
                 </div>
-                <partial name="_LoginPartial" />
-                
+                @*<partial name="_LoginPartial" />*@
+
 
             </div>
+            <a class="sign-in" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            
             <!--search
     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,49 +48,28 @@
     <div class="nav-container">
         <!-- Primary Nav-->
         <nav id="primary-nav" role="navigation">
-            
+
             <ul>
-                @*<li> <a href="#" class="single current">Current tab</a></li>*@
-
-             <li><a onclick="highlight" class="current" id="Home" asp-controller="Home" asp-action="Index">Home</a></li>
-
-             <li><a onclick="highlight" class="current" id="Burials" asp-controller="Burials" asp-action="Index">Burial</a></li>
-
-             <li><a onclick="highlight" class="current" id="Gallery" asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-
-             <li><a onclick="highlight" class="current" id="Upload" asp-controller="Home" asp-action="UploadFile">Upload</a></li>
-
-             <li><a onclick="highlight" class="current" id="Role" asp-controller="Role" asp-action="Index">Roles</a></li>
-
-             <!--
-
- <div class="mega">
-        <ul class="links">
-            <li class="featured">
-                <ul>
-                    <li><a asp-controller="burial" asp-action="Index">Burial</a></li>
-                    <li><a href="">Featured Link 2</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Menu item 1</a></li>
-            <li>
-                <a href="#">Menu item 2</a>
-                <ul class="sublinks">
-                    <li><a href="">Submenu item 1</a></li>
-                    <li><a href="">Submenu item 2</a></li>
-                    <li><a href="">Submenu item 3</a></li>
-                </ul>
-            </li>
-            <li><a href="">Menu item 3</a></li>
-            <li><a href="">Menu item 4</a></li>
-            <li><a href="">Menu item 5</a></li>
-            <li><a href="">Menu item 6</a></li>
-        </ul>
-    </div> -->
-                <!--
-    <li>
-        <a href="">Menu3</a>
-    </li> -->
+                <li> <a href="#" class="single current">Current tab</a></li>
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
+                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
+                <li><a asp-controller="Home" asp-action="UploadFile">Upload</a></li>
+                <li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Role" asp-action="Index">Roles</a>
+                        }
+                    }
+                </li>
+            </ul>
+            <ul class="navbar-right">
+                <li><a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                <li><a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -93,53 +78,53 @@
         <!-- Breadcrumb-->
         <ul class="breadcrumb">
             @*<li>
-                <div class="dropdown">
-                    <a href="" data-toggle="dropdown" class="home dropdown-toggle needsclick"><i class="fa fa-home fa-lg"></i><span class="visuallyhidden">Home</span><i class="fa fa-caret-down"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="www.byu.edu">BYU Home</a></li>
-                        <li><a href="#">Home Page</a></li>
-                        <li><a href="#">Two Pages Above</a></li>
-                    </ul><i class="divider fa fa-angle-right"></i>
-                </div>
-            </li>
-            <li><a href="#">One page above</a><i class="divider fa fa-angle-right"></i></li>
-            <li class="active">Current Page</li>*@
+                    <div class="dropdown">
+                        <a href="" data-toggle="dropdown" class="home dropdown-toggle needsclick"><i class="fa fa-home fa-lg"></i><span class="visuallyhidden">Home</span><i class="fa fa-caret-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="www.byu.edu">BYU Home</a></li>
+                            <li><a href="#">Home Page</a></li>
+                            <li><a href="#">Two Pages Above</a></li>
+                        </ul><i class="divider fa fa-angle-right"></i>
+                    </div>
+                </li>
+                <li><a href="#">One page above</a><i class="divider fa fa-angle-right"></i></li>
+                <li class="active">Current Page</li>*@
         </ul>
         <h1>@ViewBag.Title</h1>
         <br />
         @RenderBody()
     </div>
 
-        
 
-        <!--footer-->
-        <footer id="page-footer" role="contentinfo">
-            <div id="footer-links">
-                <div class=" row wrapper">
-                    <div class="col-4 alpha">
-                        <h2 class="text-center">Contact</h2><a href="">Joseph Smith Building Provo, Utah 84602</a><a href="">Open: Monday-Friday 8:00 AM - 5:00 PM MST Closed: Holdiays</a><a href="">Phone: 801-422-2735</a><a href="https://religion.byu.edu/contact">Send a Message</a>
-                    </div>
-                    <div class="col-4">
-                        <h2 class="text-center">Religious Education</h2><a href="https://religion.byu.edu/event/egyptian-excavation-exhibit">BYU Article on Exhibit</a>
-                    </div>
-                    <div class="col-4 omega">
-                        <h2 class="text-center">Related Links</h2><a href="https://www.sciencedirect.com/science/article/pii/S2352409X15000188">Rethinking Burial Dates</a><a href="https://brill.com/view/title/35250">Fag el-Gamous Cementary</a><a href="https://scholarsarchive.byu.edu/facpub/3562/">The Seila Pyramid</a><a href="https://www.nbcnews.com/science/weird-science/million-mummy-cemetery-unearthed-egypt-includes-childs-remains-n269561">Mummy News</a>
-                    </div>
+
+    <!--footer-->
+    <footer id="page-footer" role="contentinfo">
+        <div id="footer-links">
+            <div class=" row wrapper">
+                <div class="col-4 alpha">
+                    <h2 class="text-center">Contact</h2><a href="">Joseph Smith Building Provo, Utah 84602</a><a href="">Open: Monday-Friday 8:00 AM - 5:00 PM MST Closed: Holdiays</a><a href="">Phone: 801-422-2735</a><a href="https://religion.byu.edu/contact">Send a Message</a>
+                </div>
+                <div class="col-4">
+                    <h2 class="text-center">Religious Education</h2><a href="https://religion.byu.edu/event/egyptian-excavation-exhibit">BYU Article on Exhibit</a>
+                </div>
+                <div class="col-4 omega">
+                    <h2 class="text-center">Related Links</h2><a href="https://www.sciencedirect.com/science/article/pii/S2352409X15000188">Rethinking Burial Dates</a><a href="https://brill.com/view/title/35250">Fag el-Gamous Cementary</a><a href="https://scholarsarchive.byu.edu/facpub/3562/">The Seila Pyramid</a><a href="https://www.nbcnews.com/science/weird-science/million-mummy-cemetery-unearthed-egypt-includes-childs-remains-n269561">Mummy News</a>
                 </div>
             </div>
-            <div style="background-color:#002E5D" id="footer-bottom">
-                @*<div class="wrapper clearfix text-center">
+        </div>
+        <div style="background-color:#002E5D" id="footer-bottom">
+            @*<div class="wrapper clearfix text-center">
                     <a  style="color:white" id="lds" href="http://byu.edu/">Brigham Young University</a>
                 </div>*@
-                <h3 class="text-center" style="color:white" asp-controller="Home" asp-action="Privacy">Privacy Notice</h3>
-            </div>
+            <h3 class="text-center" style="color:white" asp-controller="Home" asp-action="Privacy">Privacy Notice</h3>
+        </div>
 
-        </footer>
+    </footer>
 
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-            @RenderSection("Scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
 
