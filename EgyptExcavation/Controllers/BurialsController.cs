@@ -24,6 +24,7 @@ namespace EgyptExcavation
         // Edited by Jonah to include Pagination
         public IActionResult Index(string filterId, int pageNum = 0)
         {
+            ViewBag.NavBar = "Browse";
             int pageSize = 5;
 
             //filters
@@ -127,6 +128,8 @@ namespace EgyptExcavation
         // GET: Burials/Details/5
         public async Task<IActionResult> Details(int? id) //Jonah changed this int to nullable (int?). If something breaks this could likely be the cause
         {
+            ViewBag.NavBar = "Browse";
+
             if (id == null)
             {
                 return NotFound();
@@ -148,6 +151,8 @@ namespace EgyptExcavation
         // GET: Burials/Create
         public IActionResult Create()
         {
+            ViewBag.NavBar = "Browse";
+
             return View();
         }
 
@@ -158,6 +163,7 @@ namespace EgyptExcavation
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
+            ViewBag.NavBar = "Browse";
 
             if (ModelState.IsValid)
             {
@@ -171,6 +177,8 @@ namespace EgyptExcavation
         // GET: Burials/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            ViewBag.NavBar = "Browse";
+
             if (id == null)
             {
                 return NotFound();
@@ -191,6 +199,7 @@ namespace EgyptExcavation
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BurialIdInt,BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
+            ViewBag.NavBar = "Browse";
             if (id != burial.BurialIdInt)
             {
                 return NotFound();
@@ -222,6 +231,7 @@ namespace EgyptExcavation
         // GET: Burials/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
+            ViewBag.NavBar = "Browse";
             if (id == null)
             {
                 return NotFound();
@@ -242,6 +252,7 @@ namespace EgyptExcavation
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewBag.NavBar = "Browse";
             var burial = await _context.Burial.FindAsync(id);
             _context.Burial.Remove(burial);
             await _context.SaveChangesAsync();
@@ -250,6 +261,7 @@ namespace EgyptExcavation
 
         private bool BurialExists(int id)
         {
+            ViewBag.NavBar = "Browse";
             return _context.Burial.Any(e => e.BurialIdInt == id);
         }
     }

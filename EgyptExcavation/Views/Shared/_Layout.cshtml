@@ -50,19 +50,18 @@
         <nav id="primary-nav" role="navigation">
 
             <ul>
-                <li> <a href="#" class="single current">Current tab</a></li>
                 <li>
-                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="Home" asp-action="Index" class=" @if (ViewBag.NavBar == "Home") { <text>current</text> }">Home</a>
                 </li>
-                <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
-                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                <li><a asp-controller="Home" asp-action="UploadFile">Upload</a></li>
+                <li><a asp-controller="Burials" asp-action="Index" class=" @if (ViewBag.NavBar == "Browse") { <text>current</text> } ">Burial</a></li>
+                <li><a asp-controller="Home" asp-action="Gallery" class=" @if (ViewBag.NavBar == "Gallery") { <text>current</text> } ">Gallery</a></li>
+                <li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         @if (User.IsInRole("Admin"))
                         {
-                            <a asp-controller="Role" asp-action="Index">Roles</a>
+                            <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>
                         }
                     }
                 </li>

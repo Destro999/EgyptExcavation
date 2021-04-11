@@ -23,6 +23,7 @@ namespace EgyptExcavation.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.NavBar = "Home";
             return View();
         }
 
@@ -33,12 +34,14 @@ namespace EgyptExcavation.Controllers
 
         public IActionResult Gallery()
         {
+            ViewBag.NavBar = "Gallery";
             return View();
         }
 
         [HttpGet]
         public IActionResult UploadFile()
         {
+            ViewBag.NavBar = "Upload";
             return View();
         }
 
