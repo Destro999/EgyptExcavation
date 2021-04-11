@@ -33,7 +33,6 @@
 
 
             </div>
-            <a class="sign-in" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
             
             <!--search
     <form class="d-flex">
@@ -66,9 +65,18 @@
                     }
                 </li>
             </ul>
-            <ul class="navbar-right">
-                <li><a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-                <li><a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+            <ul >
+                <li style="float:right; background-image: linear-gradient(to bottom, #628cb6, #336699);">
+                    <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+                <li style="        float: right;
+        background-image: linear-gradient(to bottom, #628cb6, #336699);
+        border-right: solid;
+        border-right-color: #001948;
+        border-right-width: 2px;">
+                    <a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </li>
+
             </ul>
         </nav>
     </div>
