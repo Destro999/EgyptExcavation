@@ -37,7 +37,7 @@ namespace EgyptExcavation
             services.AddDbContext<ApplicationDbContext>(opts =>
                 opts.UseSqlServer(Configuration[
                     "ConnectionStrings:IdentityConnection"]));
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
                  .AddDefaultTokenProviders();
