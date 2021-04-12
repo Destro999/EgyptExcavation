@@ -40,7 +40,6 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
-        [Authorize(Policy = "readpolicy")]
         public IActionResult Gallery()
         {
             ViewBag.NavBar = "Gallery";

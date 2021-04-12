@@ -20,14 +20,12 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples
-        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.BiologicalSample.ToListAsync());
         }
 
         // GET: BiologicalSamples/Details/5
-        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

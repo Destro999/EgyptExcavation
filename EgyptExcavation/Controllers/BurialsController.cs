@@ -23,7 +23,6 @@ namespace EgyptExcavation
 
         // GET: Burials
         // Edited by Jonah to include Pagination
-        [Authorize(Policy = "readpolicy")]
         public IActionResult Index(string filterId, int pageNum = 0)
         {
             ViewBag.NavBar = "Browse";
@@ -100,7 +99,6 @@ namespace EgyptExcavation
 
 
         [HttpPost]
-        [Authorize(Policy = "readpolicy")]
         public IActionResult Filter(string[] filter)
         {
             string newId = string.Join('-', filter);
@@ -129,7 +127,6 @@ namespace EgyptExcavation
         //}
 
         // GET: Burials/Details/5
-        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Details(int? id) //Jonah changed this int to nullable (int?). If something breaks this could likely be the cause
         {
             ViewBag.NavBar = "Browse";
