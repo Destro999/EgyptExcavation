@@ -52,7 +52,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
-        [Authorize(Policy = "writepolicy")]
+        //[Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult UploadFile()
         {
@@ -122,6 +122,11 @@ namespace EgyptExcavation.Controllers
         public IActionResult ImageUploads()
         {
             return View(_context.Files.ToList());
+        }
+
+        public IActionResult UploadDetails(int id)
+        {
+            return View(_context.Files.Where(x => x.DocumentId == id).FirstOrDefault());
         }
     }
 }

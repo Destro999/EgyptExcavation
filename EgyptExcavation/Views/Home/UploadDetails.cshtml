@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Files
+
+<div class="text-center">
+    @if (Model.FileType.Contains("jpg") || Model.FileType.Contains("png") || Model.FileType.Contains("JPG") || Model.FileType.Contains("PNG"))
+    {
+        <img src="@Model.GetImageFromByteArray()" />
+    }
+</div> 

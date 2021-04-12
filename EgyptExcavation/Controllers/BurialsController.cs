@@ -142,10 +142,16 @@ namespace EgyptExcavation
             {
                 return NotFound();
             }
+            var idSplit = burial.BurialId.Split(" ");
 
-            var samples = _context.BiologicalSample.Where(s => s.BurialId == burial.BurialId).ToList();
+            //var samples = _context.BiologicalSample.Where(s => s.BurialId == burial.BurialId).ToList();
+            var samples = _context.BiologicalSample.Where(x => x.BurialId.Contains(idSplit[0]) && x.BurialId.Contains(idSplit[1]) && x.BurialId.Contains(idSplit[2])
+                                                && x.BurialId.Contains(idSplit[3]) && x.BurialId.Contains(idSplit[4]) && x.BurialId.Contains(idSplit[5])).ToList();
             ViewBag.Samples = samples;
 
+            var uploads = _context.Files.Where(x => x.BurialId.Contains(idSplit[0]) && x.BurialId.Contains(idSplit[1]) && x.BurialId.Contains(idSplit[2])
+                                                && x.BurialId.Contains(idSplit[3]) && x.BurialId.Contains(idSplit[4]) && x.BurialId.Contains(idSplit[5])).ToList();
+            ViewBag.Uploads = uploads;
             //var uploads = _context.Files.Where(t => t.BurialId == burial.BurialId).ToList();
             //ViewBag.Uploads = uploads;
 
