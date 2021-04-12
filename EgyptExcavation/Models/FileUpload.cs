@@ -21,5 +21,14 @@ namespace EgyptExcavation.Models
         [MaxLength]
         public byte[] DataFiles { get; set; }
 
+
+        public string GetImageFromByteArray()
+        {
+            string imreBase64Data = Convert.ToBase64String(DataFiles);
+            string imgDataUrl = string.Format($"data:image/{FileType.Replace(".", string.Empty)};base64,{{0}}", imreBase64Data);
+
+            return imgDataUrl;
+        }
+
     }
 }

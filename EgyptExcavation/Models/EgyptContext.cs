@@ -663,7 +663,7 @@ namespace EgyptExcavation.Models
             modelBuilder.Entity<Files>(entity =>
             {
                 entity.Property(e => e.DocumentId)
-                    .HasColumnName("FileId");
+                    .HasColumnName("DocumentId");
 
                 entity.Property(e => e.Name)
                     .HasColumnName("Name")
