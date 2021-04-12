@@ -149,12 +149,15 @@ namespace EgyptExcavation
                                                 && x.BurialId.Contains(idSplit[3]) && x.BurialId.Contains(idSplit[4]) && x.BurialId.Contains(idSplit[5])).ToList();
             ViewBag.Samples = samples;
 
+<<<<<<< HEAD
             var uploads = _context.Files.Where(x => x.BurialId.Contains(idSplit[0]) && x.BurialId.Contains(idSplit[1]) && x.BurialId.Contains(idSplit[2])
                                                 && x.BurialId.Contains(idSplit[3]) && x.BurialId.Contains(idSplit[4]) && x.BurialId.Contains(idSplit[5])).ToList();
             ViewBag.Uploads = uploads;
             //var uploads = _context.Files.Where(t => t.BurialId == burial.BurialId).ToList();
             //ViewBag.Uploads = uploads;
 
+=======
+>>>>>>> f9c87ce843482d496ebe3688087ef8c654cfd9b1
             return View(burial);
         }
 

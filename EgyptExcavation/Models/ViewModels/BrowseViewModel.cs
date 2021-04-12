@@ -15,6 +15,8 @@ namespace EgyptExcavation.Models.ViewModels
         public PageNumberingInfo PageNumberingInfo { get; set; }
 
         public IEnumerable<BiologicalSample> BiologicalSamples { get; set; }
+
+        public IEnumerable<Files> Files { get; set; }
         // Below, we will also want to include any filtering info that would be included in the URL route. EX from BowlingLeague-
         // public string TeamName { get; set; }
     }
