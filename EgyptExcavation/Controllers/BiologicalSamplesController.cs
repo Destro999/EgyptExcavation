@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EgyptExcavation.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EgyptExcavation.Controllers
 {
@@ -19,12 +20,14 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples
+        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.BiologicalSample.ToListAsync());
         }
 
         // GET: BiologicalSamples/Details/5
+        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,6 +46,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Create
+        [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             return View();
@@ -53,6 +57,7 @@ namespace EgyptExcavation.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Create([Bind("BiologicalId,RackNumber,BagNumber,BurialId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials,Column17")] BiologicalSample biologicalSample)
         {
             if (ModelState.IsValid)
@@ -65,6 +70,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Edit/5
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,6 +91,7 @@ namespace EgyptExcavation.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int id, [Bind("BiologicalId,RackNumber,BagNumber,BurialId,LowPairNs,HighPairNs,BurialLocationNs,LowPairEw,HighPairEw,BurialLocationEw,BurialSubplot,BurialNumber,ClusterNumber,Date,PreviouslySampled,Notes,Initials,Column17")] BiologicalSample biologicalSample)
         {
             if (id != biologicalSample.BiologicalId)
@@ -116,6 +123,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Delete/5
+        [Authorize(Policy = "adminpolicy")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,6 +142,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // POST: BiologicalSamples/Delete/5
+        [Authorize(Policy = "adminpolicy")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

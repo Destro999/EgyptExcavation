@@ -46,9 +46,11 @@ namespace EgyptExcavation
 
             services.AddAuthorization(options => {
                 options.AddPolicy("readpolicy",
-                    builder => builder.RequireRole("Admin", "User"));
+                    builder => builder.RequireRole("Admin", "Researcher", "User"));
                 options.AddPolicy("writepolicy",
-                    builder => builder.RequireRole("Admin"));
+                    builder => builder.RequireRole("Admin", "Researcher"));
+                options.AddPolicy("adminpolicy",
+                    builder => builder.RequireRole("Admin", "Reasearcher", "User"));
             });
         }
 
