@@ -3,15 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EgyptExcavation</title>
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="img/icon.jpg" type="image/icon type">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/header.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/base.css">
     <link rel="stylesheet" href="~/css/responsive.css" media="all and (min-width:16em)">
     <link href="~/css/StyleSheet.css" rel="stylesheet" />
-
-
 </head>
 
 @using Microsoft.AspNetCore.Identity
@@ -35,14 +34,13 @@
 
 
             </div>
-            <a class="sign-in" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-
+            
             <!--search
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-                -->
+    <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+        -->
         </div>
     </header>
 
@@ -52,27 +50,50 @@
         <nav id="primary-nav" role="navigation">
 
             <ul>
-                <li> <a href="#" class="single current">Current tab</a></li>
                 <li>
-                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="Home" asp-action="Index" class=" @if (ViewBag.NavBar == "Home") { <text>current</text> }">Home</a>
                 </li>
-                <li><a asp-controller="Burials" asp-action="Index">Burial</a></li>
-                <li><a asp-controller="Home" asp-action="Gallery">Gallery</a></li>
-                <li><a asp-controller="Home" asp-action="UploadFile">Upload</a></li>
+                <li><a asp-controller="Burials" asp-action="Index" class=" @if (ViewBag.NavBar == "Browse") { <text>current</text> } ">Browse Burials</a></li>
+                <li><a asp-controller="Home" asp-action="Gallery" class=" @if (ViewBag.NavBar == "Gallery") { <text>current</text> } ">Gallery</a></li>
+                <!--<li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>-->
+                @if (User.Identity.IsAuthenticated)
+                {
+            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+            {
+            <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>
+}}
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a asp-controller="Role" asp-action="Index">Roles</a>
-                        }
-                    }
+            @if (User.IsInRole("Admin"))
+            {
+            <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>}}
                 </li>
             </ul>
-            <ul class="navbar-right">
-                <li><a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-                <li><a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-            </ul>
+            @if (SignInManager.IsSignedIn(User))
+             {
+                <ul>
+                    <li style="float:right;" class="">
+                        <form id="logoutForm" class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button id="logout" type="submit" class="nav-link text-white">Logout</button>
+                        </form>
+                    </li>
+                    <li style="float: right;">
+                        <a id="manage" class="text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                    </li>
+
+                </ul>
+            }
+            else
+            {
+                <ul>
+                    <li style="float:right; background-image: linear-gradient(to bottom, #628cb6, #336699);">
+                        <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Researcher Portal</a>
+                    </li>
+                    
+
+                </ul> 
+            }
         </nav>
     </div>
 
@@ -92,7 +113,9 @@
                 <li><a href="#">One page above</a><i class="divider fa fa-angle-right"></i></li>
                 <li class="active">Current Page</li>*@
         </ul>
-        <h1>@ViewBag.Title</h1>
+        <div class="text-center">
+            <!--<h1>@ViewBag.Title</h1>-->
+        </div>
         <br />
         @RenderBody()
     </div>
@@ -126,7 +149,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/JavaScript.js"asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

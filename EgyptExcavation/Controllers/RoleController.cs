@@ -18,6 +18,7 @@ namespace EgyptExcavation.Controllers
         [Authorize(Policy = "readpolicy")]
         public IActionResult Index()
         {
+            ViewBag.NavBar = "Roles";
             var roles = roleManager.Roles.ToList();
             return View(roles);
         }
@@ -25,12 +26,14 @@ namespace EgyptExcavation.Controllers
         [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
+            ViewBag.NavBar = "Roles";
             return View(new IdentityRole());
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(IdentityRole role)
         {
+            ViewBag.NavBar = "Roles";
             await roleManager.CreateAsync(role);
             return RedirectToAction("Index");
         }
