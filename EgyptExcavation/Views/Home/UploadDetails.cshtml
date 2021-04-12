@@ -6,6 +6,8 @@
 @model Files
 
 <div class="text-center">
+    <h1>File Upload</h1>
+    <h3 class="mb-2 text-muted">File ID #@Model.DocumentId-- @Model.BurialId</h3>
     @if (Model.FileType.Contains("jpg") || Model.FileType.Contains("png") || Model.FileType.Contains("JPG") || Model.FileType.Contains("PNG"))
     {
         <img src="@Model.GetImageFromByteArray()" />

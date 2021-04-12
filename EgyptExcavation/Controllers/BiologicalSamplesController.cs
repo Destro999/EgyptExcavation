@@ -19,6 +19,7 @@ namespace EgyptExcavation.Controllers
             _context = context;
         }
 
+        [Authorize(Policy = "writepolicy")]
         // GET: BiologicalSamples
         public async Task<IActionResult> Index()
         {

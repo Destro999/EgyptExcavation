@@ -52,7 +52,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
-        //[Authorize(Policy = "writepolicy")]
+        [Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult UploadFile()
         {
@@ -60,6 +60,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        [Authorize(Policy = "writepolicy")]
         [HttpPost]
         public IActionResult UploadFile(IFormFile files, Files file)
         {
