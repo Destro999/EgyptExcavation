@@ -5,7 +5,12 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-@{
+
+<div class="text-center">
+    <p>Thanks for creating your new account. A system administrator will review your account and assign permission to create and edit records.</p>
+    <a class="btn btn-primary" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+</div>
+@*@{
     if (@Model.DisplayConfirmAccountLink)
     {
 <p>
@@ -19,4 +24,4 @@
         Please check your email to confirm your account.
 </p>
     }
-}
+}*@

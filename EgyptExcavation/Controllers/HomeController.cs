@@ -1,5 +1,6 @@
 ﻿using EgyptExcavation.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -33,6 +34,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        [Authorize(Policy = "writepolicy")]
         public IActionResult AddRecord()
         {
             ViewBag.NavBar = "AddRecord";
@@ -50,6 +52,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        [Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult UploadFile()
         {

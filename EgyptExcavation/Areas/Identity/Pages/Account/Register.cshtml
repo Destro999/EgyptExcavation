@@ -28,7 +28,7 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group hidden">
                 <label asp-for="Input.Name"></label>
                 <select asp-for="Input.Name" class="form-control" asp-items='new SelectList(roles,"Id","Name")'>
                 </select>
@@ -38,7 +38,8 @@
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
-        <section>
+        @* Jonah commented out the external registration stuff cause we won't implement one, other than CAS'
+            <section>
             <h4>Use another service to register.</h4>
             <hr />
             @{
@@ -65,7 +66,7 @@
                     </form>
                 }
             }
-        </section>
+        </section>*@
     </div>
 </div>
 
