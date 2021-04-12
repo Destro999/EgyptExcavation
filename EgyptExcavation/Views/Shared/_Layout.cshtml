@@ -54,46 +54,42 @@
                 </li>
                 <li><a asp-controller="Burials" asp-action="Index" class=" @if (ViewBag.NavBar == "Browse") { <text>current</text> } ">Browse Burials</a></li>
                 <li><a asp-controller="Home" asp-action="Gallery" class=" @if (ViewBag.NavBar == "Gallery") { <text>current</text> } ">Gallery</a></li>
-                <li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>
+                <!--<li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>-->
                 @if (User.Identity.IsAuthenticated)
                 {
-        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-        {
-        <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>}}
+            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+            {
+            <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>
+}}
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
-        @if (User.IsInRole("Admin"))
-        {
-        <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>}}
+            @if (User.IsInRole("Admin"))
+            {
+            <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>}}
                 </li>
             </ul>
             @if (SignInManager.IsSignedIn(User))
              {
                 <ul>
+                    <li style="float:right;" class="">
+                        <form id="logoutForm" class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button id="logout" type="submit" class="nav-link text-white">Logout</button>
+                        </form>
+                    </li>
                     <li style="float: right;">
                         <a id="manage" class="text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
                     </li>
-                    <li style="float:right;" class="sign-in button text-whit">
-                        <form id="logoutForm" class="form-inline text-white" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                        </form>
-                    </li>
+
                 </ul>
             }
             else
             {
                 <ul>
                     <li style="float:right; background-image: linear-gradient(to bottom, #628cb6, #336699);">
-                        <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Researcher Portal</a>
                     </li>
-                    <li style="        float: right;
-                background-image: linear-gradient(to bottom, #628cb6, #336699);
-                border-right: solid;
-                border-right-color: #001948;
-                border-right-width: 2px;">
-                        <a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
-                    </li>
+                    
 
                 </ul> 
             }
