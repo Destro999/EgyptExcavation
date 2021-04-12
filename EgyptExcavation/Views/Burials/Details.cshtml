@@ -4,6 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
+<link rel="icon" href="~/img/icon.jpg" type="image/icon type">
 @*@model BrowseViewModel*@
 
 <!--Testing-->
@@ -730,6 +731,8 @@
 {
     <a asp-action="Details" asp-controller="BiologicalSamples" asp-route-id="@sample.BiologicalId" class="btn btn-success">Biological Sample #@(ViewBag.Samples.IndexOf(sample) + 1)</a>
 }
+<br />
+<br />
 
 <div>
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
@@ -738,8 +741,16 @@
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
             <a asp-action="Edit" asp-route-id="@Model.BurialIdInt" class="btn btn-warning">Edit Record</a>
-            <a asp-action="Delete" asp-route-id="@Model.BurialIdInt" class="btn btn-danger">Delete Record</a>
             <a asp-controller="BiologicalSamples" asp-action="Create" class="btn btn-success">Add Biological Sample</a>
+
+
+        }
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Delete" asp-route-id="@Model.BurialIdInt" class="btn btn-danger">Delete Record</a>
 
 
         }
