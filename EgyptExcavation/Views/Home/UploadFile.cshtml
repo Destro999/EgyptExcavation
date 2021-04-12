@@ -7,7 +7,7 @@
 
 <link rel="icon" href="~/img/icon.jpg" type="image/icon type">
 
-<h1>Upload Pictures Here</h1>
+<h1>Upload Field Notes or Photos Here</h1>
 
 
 <!-- Upload  -->
@@ -17,50 +17,46 @@
         <div>
             <div class="row">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="panel-group">
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse1">Burial Information</a>
-                            </h4>
+                <div class="row ">
+                        <div class="col-6">
+                            <ul class="list-group">
+                                <li class="form-group list-group-item">
+                                    <label class="control-label text-center" style="text-decoration: underline;" asp-for="BurialId"><h3><b>Burial Id</b></h3></label>
+                                    <p><b>Please the following format:</b> </p>
+                                    <p>N 190/200 E 40/50 SE #9</p>
+                                    <input asp-for="BurialId" class="form-control" />
+                                    <span asp-validation-for="BurialId" class="text-danger"></span>
+                                    <input asp-for="DocumentId" class="form-control" type="hidden" />
+                                    <span asp-validation-for="DocumentId"></span>
+                                </li>
+                            </ul>
                         </div>
-
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <div class="row">
-                                <div class="col-12">
-                                    <ul class="list-group">
-                                        <li class="form-group list-group-item">
-                                            <label asp-for="BurialId" class="control-label"></label>
-                                            <input asp-for="BurialId" class="form-control" />
-                                            <span asp-validation-for="BurialId" class="text-danger"></span>
-                                        </li>
-                                    </ul>
+                        <div class="col-6">
+                            <div class="col-12 list-group">
+                                <div class="form-group list-group-item">
+                                    <div class="container" style="padding:2%">
+                                        <br />
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                <input name="files" type="file" asp-for="DataFiles" />
+                                                <span asp-validation-for="DataFiles"></span>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <input class="btn btn-primary" type="submit">
+                                        <br />
+                                    </div>
                                 </div>
                             </div>
-                            <br />
                         </div>
-                    </div>
-                </div>
-                <input asp-for="DocumentId" class="form-control" type="hidden" />
-                <span asp-validation-for="DocumentId"></span>
+                    </div>                  
+                <br />
             </div>
         </div>
     </div>
+
     <br />
-    <div class="col-4" style="border: 2px solid black;">
-        <br />
-        <div class="form-group">
-            <div class="col-md-10">
-                <input name="files" type="file" asp-for="DataFiles" />
-                <span asp-validation-for="DataFiles"></span>
-            </div>
-        </div>
-        <br />
-        <br />
-        <input style="background-color:navy; color:white; padding-bottom:1%" type="submit">
-        <br />
-    </div>
 </form>
 
 
