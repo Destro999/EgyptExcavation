@@ -52,7 +52,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
-        [Authorize(Policy = "writepolicy")]
+        //[Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult UploadFile()
         {
