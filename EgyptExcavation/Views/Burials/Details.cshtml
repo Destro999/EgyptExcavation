@@ -7,7 +7,6 @@
 <link rel="icon" href="~/img/icon.jpg" type="image/icon type">
 @*@model BrowseViewModel*@
 
-<div class="text-center">
     <form asp-action="Details">
         <div class="container">
             <div>
@@ -17,7 +16,7 @@
 
                         <!--the picture-->
 
-                        <div class="img-details">
+                        <div class="img-details text-center">
 
                             @if (@Model.HasPhoto)
                             {
@@ -32,7 +31,6 @@
 
                         <!--the summary-->
                         <!--<div class="card-summary" style="width:100%">-->
-                        <div class="text-left">
                             <ul class="list-group">
                                 <li class="form-group list-group-item">
                                     <div class="text-center">
@@ -155,7 +153,6 @@
 
                                 </li>
                             </ul>
-                        </div>
 
                         <br />
                         <br />
@@ -766,7 +763,6 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
-</div>
 
 
 
