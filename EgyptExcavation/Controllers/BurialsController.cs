@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EgyptExcavation.Models;
 using EgyptExcavation.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EgyptExcavation 
 {
@@ -22,6 +23,7 @@ namespace EgyptExcavation
 
         // GET: Burials
         // Edited by Jonah to include Pagination
+        [Authorize(Policy = "readpolicy")]
         public IActionResult Index(string filterId, int pageNum = 0)
         {
             ViewBag.NavBar = "Browse";
@@ -98,6 +100,7 @@ namespace EgyptExcavation
 
 
         [HttpPost]
+        [Authorize(Policy = "readpolicy")]
         public IActionResult Filter(string[] filter)
         {
             string newId = string.Join('-', filter);
@@ -126,6 +129,7 @@ namespace EgyptExcavation
         //}
 
         // GET: Burials/Details/5
+        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Details(int? id) //Jonah changed this int to nullable (int?). If something breaks this could likely be the cause
         {
             ViewBag.NavBar = "Browse";
@@ -149,6 +153,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Create
+        [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             ViewBag.NavBar = "Browse";
@@ -161,6 +166,7 @@ namespace EgyptExcavation
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Create([Bind("BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
             ViewBag.NavBar = "Browse";
@@ -175,6 +181,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Edit/5
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.NavBar = "Browse";
@@ -197,6 +204,7 @@ namespace EgyptExcavation
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int id, [Bind("BurialIdInt,BurialId,BurialLocationNs,BurialLocationEw,LowPairNs,HighPairNs,LowPairEw,HighPairEw,BurialSubplot,BurialDepth,SouthToHead,SouthToFeet,WestToHead,WestToFeet,BurialSituation,LengthOfRemainsMeters,LengthOfRemainsCentimeters,BurialNumber,SampleNumber,GenderGe,GeFunctionTotal,GenderBodyCol,SexMethod,BasilarSuture,VentralArc,SubpubicAngle,SciaticNotch,PubicBone,PreaurSulcus,MedialIpRamus,DorsalPitting,ForamanMagnum,FemurHead,HumerusHead,Osteophytosis,PubicSymphysis,FemurLength,HumerusLength,TibiaLength,Robust,SupraorbitalRidges,OrbitEdge,ParietalBossing,Gonian,NuchalCrest,ZygomaticCrest,CranialSuture,MaximumCranialLength,MaximumCranialBreadth,BasionBregmaHeight,BasionNasion,BasionProsthionLength,BizygomaticDiameter,NasionProsthion,MaximumNasalBreadth,InterorbitalBreadth,ArtifactsDescription,HairColor,PreservationIndex,SampleTaken,HairTaken,SoftTissueTaken,BoneTaken,ToothTaken,TextileTaken,DescriptionOfTaken,ArtifactFound,EstimateAge,AgeMethod,AgeCode,EstimateLivingStature,ToothAttrition,ToothEruption,PathologyAnomalies,EpiphysealUnion,YearFound,MonthFound,DayFound,HeadDirection,Gamous,BurialIcon,BurialIcon2,BurialPreservation")] Burial burial)
         {
             ViewBag.NavBar = "Browse";
@@ -229,6 +237,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Delete/5
+        [Authorize(Policy = "adminpolicy")]
         public async Task<IActionResult> Delete(int id)
         {
             ViewBag.NavBar = "Browse";
@@ -248,6 +257,7 @@ namespace EgyptExcavation
         }
 
         // POST: Burials/Delete/5
+        [Authorize(Policy = "adminpolicy")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
