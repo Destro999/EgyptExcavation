@@ -1,10 +1,10 @@
-﻿@model EgyptExcavation.Models.Burial 
+﻿@model EgyptExcavation.Models.Burial
 
 @{
     ViewData["Title"] = "Details";
 }
 
-@*@model BrowseViewModel*@ 
+@*@model BrowseViewModel*@
 
 <!--Testing-->
 <form asp-action="Details">
@@ -15,7 +15,7 @@
                 <div class="panel-group">
 
                     <!--the picture-->
-                   
+
                     <div class="img-details">
 
                         @if (@Model.HasPhoto)
@@ -25,131 +25,131 @@
 
                     </div>
 
-                        <br />
-                        <br />
+                    <br />
+                    <br />
 
 
-                        <!--the summary-->
-                        <!--<div class="card-summary" style="width:100%">-->
-                        <ul class="list-group">
-                            <li class="form-group list-group-item">
-                                <h4>Summary</h4>
-                                <br />
+                    <!--the summary-->
+                    <!--<div class="card-summary" style="width:100%">-->
+                    <ul class="list-group">
+                        <li class="form-group list-group-item">
+                            <h4>Summary</h4>
+                            <br />
 
-                                <p> <b>Burial ID: </b>@Model.BurialId</p>
+                            <p> <b>Burial ID: </b>@Model.BurialId</p>
 
-                                @if (!string.IsNullOrEmpty(@Model.BurialSituation))
-                                {
-                                    <b> Description of burial:</b>
-                                    <p>@Model.BurialSituation</p>
+                            @if (!string.IsNullOrEmpty(@Model.BurialSituation))
+                            {
+                                <b> Description of burial:</b>
+                                <p>@Model.BurialSituation</p>
 
-                                }
-                                else
-                                {
-                                    <p><b>Description of burial:</b> Unreported</p>
-                                }
-
-
-
-
-                                    <br />
-                                    <p>N or S of the central datum point:  <b> @Model.BurialLocationNs</b></p>
-                                    <p>E or W of the central datum point:  <b> @Model.BurialLocationEw</b></p>
-                                    <br />
-
-                                    @if (!string.IsNullOrEmpty(@Model.LowPairNs))
-                                    {
-                                        <p>How many meters N or S to the closest side of the square:  <b> @Model.LowPairNs</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>How many meters N or S to the closest side of the square:  <b>Unreported</b></p>
-                                    }
-
-
-                                    @if (!string.IsNullOrEmpty(@Model.HighPairNs))
-                                    {
-                                        <p>How many meters N or S to the furthest side of the square: <b>@Model.HighPairNs</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>How many meters N or S to the furthest side of the square:  <b>Unreported</b></p>
-                                    }
-
-
-                                    @if (!string.IsNullOrEmpty(@Model.LowPairEw))
-                                    {
-                                        <p>How many meters E or W to the closest side of the square:  <b>@Model.LowPairEw</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>How many meters E or W to the closest side of the square:  <b>Unreported</b></p>
-                                    }
-
-                                    @if (!string.IsNullOrEmpty(@Model.HighPairEw))
-                                    {
-                                        <p>How many meters E or W to the furthest side of the square:  <b>@Model.HighPairEw</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>How many meters E or W to the furthest side of the square:  <b>Unreported</b></p>
-                                    }
-                                    <br />
-
-                                    @if (!string.IsNullOrEmpty(@Model.BurialDepth))
-                                    {
-                                        <p>Depth of the remains at the time of discovery:  <b>@Model.BurialDepth</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>Depth of the remains at the time of discovery:  <b>Unreported</b></p>
-                                    }
-
-                                    @if (!string.IsNullOrEmpty(@Model.LengthOfRemainsCentimeters))
-                                    {
-                                        <p>The length of the remains from head to foot at the time of the discovery:  <b>@Model.LengthOfRemainsCentimeters</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>The length of the remains from head to foot at the time of the discovery:  <b>Unreported</b></p>
-                                    }
-                                    <br />
+                            }
+                            else
+                            {
+                                <p><b>Description of burial:</b> Unreported</p>
+                            }
 
 
 
-                                    @if (!string.IsNullOrEmpty(Model.HairColor))
-                                    {
-                                        <p>Hair color observed on remains:  <b>@Model.HairColor</b></p>
 
-                                    }
-                                    else
-                                    {
-                                        <p>Hair color observed on remains: <b>Unreported</b> </p>
-                                    }
+                            <br />
+                            <p>N or S of the central datum point:  <b> @Model.BurialLocationNs</b></p>
+                            <p>E or W of the central datum point:  <b> @Model.BurialLocationEw</b></p>
+                            <br />
+
+                            @if (!string.IsNullOrEmpty(@Model.LowPairNs))
+                            {
+                                <p>How many meters N or S to the closest side of the square:  <b> @Model.LowPairNs</b></p>
+
+                            }
+                            else
+                            {
+                                <p>How many meters N or S to the closest side of the square:  <b>Unreported</b></p>
+                            }
 
 
-                                    @if (!string.IsNullOrEmpty(@Model.EstimateAge))
-                                    {
-                                        <p>Estimated age calcutaled by tooth attrition:  <b>@Model.EstimateAge</b> </p>
+                            @if (!string.IsNullOrEmpty(@Model.HighPairNs))
+                            {
+                                <p>How many meters N or S to the furthest side of the square: <b>@Model.HighPairNs</b></p>
 
-                                    }
-                                    else
-                                    {
-                                        <p>Estimated age calcutaled by tooth attrition:  <b>Unreported</b> </p>
-                                    }
+                            }
+                            else
+                            {
+                                <p>How many meters N or S to the furthest side of the square:  <b>Unreported</b></p>
+                            }
 
-                                    <br />
-                                    <br />
-                                    <b>Click on the Dropdown List below to check more details</b>
 
-                                </li>
-                        </ul>
+                            @if (!string.IsNullOrEmpty(@Model.LowPairEw))
+                            {
+                                <p>How many meters E or W to the closest side of the square:  <b>@Model.LowPairEw</b></p>
+
+                            }
+                            else
+                            {
+                                <p>How many meters E or W to the closest side of the square:  <b>Unreported</b></p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(@Model.HighPairEw))
+                            {
+                                <p>How many meters E or W to the furthest side of the square:  <b>@Model.HighPairEw</b></p>
+
+                            }
+                            else
+                            {
+                                <p>How many meters E or W to the furthest side of the square:  <b>Unreported</b></p>
+                            }
+                            <br />
+
+                            @if (!string.IsNullOrEmpty(@Model.BurialDepth))
+                            {
+                                <p>Depth of the remains at the time of discovery:  <b>@Model.BurialDepth</b></p>
+
+                            }
+                            else
+                            {
+                                <p>Depth of the remains at the time of discovery:  <b>Unreported</b></p>
+                            }
+
+                            @if (!string.IsNullOrEmpty(@Model.LengthOfRemainsCentimeters))
+                            {
+                                <p>The length of the remains from head to foot at the time of the discovery:  <b>@Model.LengthOfRemainsCentimeters</b></p>
+
+                            }
+                            else
+                            {
+                                <p>The length of the remains from head to foot at the time of the discovery:  <b>Unreported</b></p>
+                            }
+                            <br />
+
+
+
+                            @if (!string.IsNullOrEmpty(Model.HairColor))
+                            {
+                                <p>Hair color observed on remains:  <b>@Model.HairColor</b></p>
+
+                            }
+                            else
+                            {
+                                <p>Hair color observed on remains: <b>Unreported</b> </p>
+                            }
+
+
+                            @if (!string.IsNullOrEmpty(@Model.EstimateAge))
+                            {
+                                <p>Estimated age calcutaled by tooth attrition:  <b>@Model.EstimateAge</b> </p>
+
+                            }
+                            else
+                            {
+                                <p>Estimated age calcutaled by tooth attrition:  <b>Unreported</b> </p>
+                            }
+
+                            <br />
+                            <br />
+                            <b>Click on the Dropdown List below to check more details</b>
+
+                        </li>
+                    </ul>
 
                     <br />
                     <br />
@@ -721,24 +721,37 @@
 
                 </div>
 
-                    </div>
+            </div>
         </div>
     </div>
 </form>
 
+@foreach (var sample in ViewBag.Samples)
+{
+    <a asp-action="Details" asp-controller="BiologicalSamples" asp-route-id="@sample.BiologicalId" class="btn btn-success">Biological Sample #@(ViewBag.Samples.IndexOf(sample) + 1)</a>
+}
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.BurialIdInt">Edit</a> |
-    <a asp-action="Index">Back to List</a> 
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.BurialIdInt" class="btn btn-warning">Edit Record</a>
+            <a asp-action="Delete" asp-route-id="@Model.BurialIdInt" class="btn btn-danger">Delete Record</a>
+            <a asp-controller="BiologicalSamples" asp-action="Create" class="btn btn-success">Delete Record</a>
+
+
+        }
+    }
+
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-@foreach (var sample in ViewBag.Samples)
-{
-    <a asp-action="Details" asp-controller="BiologicalSamples" asp-route-id="@sample.BiologicalId" class="btn btn-success">Biological Sample #@(ViewBag.Samples.IndexOf(sample) + 1)</a>
-}
+
 
 
 
