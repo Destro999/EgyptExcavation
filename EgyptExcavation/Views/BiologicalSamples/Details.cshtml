@@ -138,19 +138,24 @@
 
 
 <div>
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    <a asp-controller="Burials" asp-action="Details" class="btn btn-primary">Back to List</a>
     @if (User.Identity.IsAuthenticated)
     {
         @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
         {
             <a asp-action="Edit" asp-route-id="@Model.BiologicalId" class="btn btn-warning">Edit Record</a>
-            <a asp-action="Delete" asp-route-id="@Model.BiologicalId" class="btn btn-danger">Delete Record</a>
             <a asp-controller="BiologicalSamples" asp-action="Create" class="btn btn-success">Add Biological Sample</a>
 
 
         }
     }
-
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Delete" asp-route-id="@Model.BiologicalId" class="btn btn-danger">Delete Record</a>
+        }
+    }
 </div>
 
 <!--
