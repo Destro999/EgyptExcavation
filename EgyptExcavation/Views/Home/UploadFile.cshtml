@@ -1,33 +1,66 @@
-﻿
+﻿@model EgyptExcavation.Models.Files
+
 @{
     ViewData["Title"] = "Upload File";
 }
+
 
 <link rel="icon" href="~/img/icon.jpg" type="image/icon type">
 
 <h1>Upload Pictures Here</h1>
 
 
-<h2 class="mySlides">File Upload & Image Preview</h2>
-<p class="lead">No Plugins <b>Just Javascript</b></p>
-
 <!-- Upload  -->
-<form id="file-upload-form" class="uploader">
-    <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+<form asp-controller="Home" asp-action="UploadFile" id="file-upload-form" class="uploader" method="post" enctype="multipart/form-data">
 
-    <label for="file-upload" id="file-drag">
-        <img id="file-image" src="#" alt="Preview" class="hidden">
-        <div id="start">
-            <i class="fa fa-download" aria-hidden="true"></i>
-            <div>Select a file or drag here</div>
-            <div id="notimage" class="hidden">Please select an image</div>
-            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+    <div class="container">
+        <div>
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="panel-group">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Burial Information</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul class="list-group">
+                                        <li class="form-group list-group-item">
+                                            <label asp-for="BurialId" class="control-label"></label>
+                                            <input asp-for="BurialId" class="form-control" />
+                                            <span asp-validation-for="BurialId" class="text-danger"></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <input asp-for="DocumentId" class="form-control" type="hidden" />
+                <span asp-validation-for="DocumentId"></span>
+            </div>
         </div>
-        <div id="response" class="hidden">
-            <div id="messages"></div>
-            <progress class="progress" id="file-progress" value="0">
-                <span>0</span>%
-            </progress>
+    </div>
+    <br />
+    <div class="col-4" style="border: 2px solid black;">
+        <br />
+        <div class="form-group">
+            <div class="col-md-10">
+                <input name="files" type="file" asp-for="DataFiles" />
+                <span asp-validation-for="DataFiles"></span>
+            </div>
         </div>
-    </label>
+        <br />
+        <br />
+        <input style="background-color:navy; color:white; padding-bottom:1%" type="submit">
+        <br />
+    </div>
 </form>
+
+

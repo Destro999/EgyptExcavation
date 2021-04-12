@@ -734,6 +734,13 @@
 <br />
 <br />
 
+@*@foreach (var upload in ViewBag.Uploads)
+{
+    <p>Hello There</p>
+}*@
+<br />
+<br />
+
 <div>
     <a asp-action="Index" class="btn btn-primary">Back to List</a>
     @if (User.Identity.IsAuthenticated)

@@ -1,9 +1,11 @@
 ﻿using EgyptExcavation.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,11 +16,15 @@ namespace EgyptExcavation.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
+        private readonly EgyptContext _context;
+
         public int PictureSize = 5;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, EgyptContext context)
         {
             _logger = logger;
+
+            _context = context;
         }
 
         public IActionResult Index()
@@ -49,6 +55,57 @@ namespace EgyptExcavation.Controllers
         {
             ViewBag.NavBar = "Upload";
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult UploadFile(IFormFile files, Files file)
+        {
+            ViewBag.NavBar = "Upload";
+
+            if (files != null)
+            {
+                if (files.Length > 0)
+                {
+                    //Getting FileName
+                    var fileName = Path.GetFileName(files.FileName);
+                    //Getting file Extension
+                    var fileExtension = Path.GetExtension(fileName);
+                    // concatenating  FileName + FileExtension
+                    var newFileName = String.Concat(Convert.ToString(Guid.NewGuid()), fileExtension);
+
+                    var newBurialId = file.BurialId;
+
+
+                    var objfiles = new Files()
+                    {
+                        DocumentId = 0,
+                        Name = newFileName,
+                        FileType = fileExtension,
+                        BurialId = newBurialId
+                    };
+
+                    using (var target = new MemoryStream())
+                    {
+                        files.CopyTo(target);
+                        objfiles.DataFiles = target.ToArray();
+                    }
+
+                    _context.Files.Add(objfiles);
+                    _context.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+
+                }
+            }
+            return View();
+
+
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(upload);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(upload);
         }
 
 

@@ -24,6 +24,8 @@ namespace EgyptExcavation.Models
         public virtual DbSet<C14> C14 { get; set; }
         public virtual DbSet<Cranial> Cranial { get; set; }
 
+        public virtual DbSet<Files> Files { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -658,7 +660,31 @@ namespace EgyptExcavation.Models
                     .HasColumnType("float");
             });
 
-            OnModelCreatingPartial(modelBuilder);
+            modelBuilder.Entity<Files>(entity =>
+            {
+                entity.Property(e => e.DocumentId)
+                    .HasColumnName("FileId");
+
+                entity.Property(e => e.Name)
+                    .HasColumnName("Name")
+                    .HasColumnType("nvarchar(50)");
+
+                entity.Property(e => e.FileType)
+                    .HasColumnName("FileType")
+                    .HasColumnType("nvarchar(50)");
+
+                entity.Property(e => e.BurialId)
+                    .HasColumnName("BurialId")
+                    .HasColumnType("nvarchar(50)");
+
+                entity.Property(e => e.FileType)
+                    .HasColumnName("FileType")
+                    .HasColumnType("varbinary");
+
+            });
+            
+
+                OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

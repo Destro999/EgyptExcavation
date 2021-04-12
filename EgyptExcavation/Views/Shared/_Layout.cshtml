@@ -51,6 +51,11 @@
 
             <ul>
                 <li>
+                    <a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "UploadFile") { <text>current</text> }">Upload File</a>
+                </li>
+
+
+                <li>
                     <a asp-controller="Home" asp-action="Index" class=" @if (ViewBag.NavBar == "Home") { <text>current</text> }">Home</a>
                 </li>
                 <li><a asp-controller="Burials" asp-action="Index" class=" @if (ViewBag.NavBar == "Browse") { <text>current</text> } ">Browse Burials</a></li>
@@ -58,16 +63,16 @@
                 <!--<li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>-->
                 @if (User.Identity.IsAuthenticated)
                 {
-            @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
-            {
-            <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>
-}}
+                    @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+                    {
+                        <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>
+                    }}
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
-            @if (User.IsInRole("Admin"))
-            {
-            <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>}}
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Role" asp-action="Index" class="@if (ViewBag.NavBar == "Roles") { <text>current</text> }">Roles</a>}}
                 </li>
             </ul>
             @if (SignInManager.IsSignedIn(User))
