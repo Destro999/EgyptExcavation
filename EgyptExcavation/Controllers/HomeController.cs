@@ -27,6 +27,12 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        public IActionResult AddRecord()
+        {
+            ViewBag.NavBar = "AddRecord";
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

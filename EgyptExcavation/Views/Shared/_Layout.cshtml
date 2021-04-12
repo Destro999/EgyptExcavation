@@ -55,6 +55,13 @@
                 <li><a asp-controller="Burials" asp-action="Index" class=" @if (ViewBag.NavBar == "Browse") { <text>current</text> } ">Browse Burials</a></li>
                 <li><a asp-controller="Home" asp-action="Gallery" class=" @if (ViewBag.NavBar == "Gallery") { <text>current</text> } ">Gallery</a></li>
                 <li><a asp-controller="Home" asp-action="UploadFile" class=" @if (ViewBag.NavBar == "Upload") { <text>current</text> } ">Upload</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
+                    {
+                        <li><a asp-controller="Home" asp-action="AddRecord" class="@if (ViewBag.NavBar == "AddRecord") { <text>current</text> }">Add Record</a></li>
+                    }
+                }
                 <li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -69,11 +76,7 @@
                 <li style="float:right; background-image: linear-gradient(to bottom, #628cb6, #336699);">
                     <a class="" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
                 </li>
-                <li style="        float: right;
-        background-image: linear-gradient(to bottom, #628cb6, #336699);
-        border-right: solid;
-        border-right-color: #001948;
-        border-right-width: 2px;">
+                <li style="float: right;background-image: linear-gradient(to bottom, #628cb6, #336699);border-right: solid;border-right-color: #001948;border-right-width: 2px;">
                     <a class="" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
                 </li>
 
@@ -97,7 +100,9 @@
                 <li><a href="#">One page above</a><i class="divider fa fa-angle-right"></i></li>
                 <li class="active">Current Page</li>*@
         </ul>
-        <h1>@ViewBag.Title</h1>
+        <div class="text-center">
+            <h1>@ViewBag.Title</h1>
+        </div>
         <br />
         @RenderBody()
     </div>

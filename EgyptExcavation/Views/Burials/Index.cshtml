@@ -78,9 +78,6 @@
     <div class="text-center">
         <h1>Browse Burials</h1>
 
-        <p>
-            <a asp-action="Create">Create New</a>
-        </p>
         @if (Model.PageNumberingInfo.TotalNumItems == 0)
         {
             <div class="text-center"><p>No records match the filters you have entered.</p></div>
@@ -94,11 +91,15 @@
                     <img src="/img/browse/@burial.GetPhotoPath()" class="card-img-top" alt="...">
                 }
 
-                <div class="card-body">
-                    <h5 class="card-title">@burial.BurialId</h5>
-                    <p class="card-text">@burial.BurialSituation</p>
-                    <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
-                </div>
+            <div class="card-body">
+                <p class="card-title"><b>@burial.BurialId</b></p>
+                @if (burial.YearFound != null)
+                {
+                <h6 class="card-subtitle mb-2 text-muted">Excavated @burial.YearFound</h6>
+                }
+                <p class="card-text">@burial.BurialSituation</p>
+                <a asp-action="Details" asp-route-id="@burial.BurialIdInt" class="btn btn-primary">Details</a>
+            </div>
             </div>
         }
 
