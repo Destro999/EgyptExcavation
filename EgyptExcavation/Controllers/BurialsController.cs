@@ -102,32 +102,12 @@ namespace EgyptExcavation
         public IActionResult Filter(string[] filter)
         {
             string newId = string.Join('-', filter);
-            return RedirectToAction("Index", new { filterId = newId }); //Might have to adjust "ID" here, not sure if that name is by convention
+            return RedirectToAction("Index", new { filterId = newId }); 
         }
 
 
-        //Don't think we need any of that below!
-
-        ////This will be referenced in the BurialFilterViewComponent to return the Burials Index view, but filtered with the form data
-        //public IActionResult IndexFiltered(int pageNum = 0)
-        //{
-        //    int pageSize = 5;
-        //    BrowseViewModel browseViewModel = new BrowseViewModel
-        //    {
-        //        Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
-        //        PageNumberingInfo = new PageNumberingInfo
-        //        {
-        //            NumItemsPerPage = pageSize,
-        //            CurrentPage = pageNum,
-        //            // This will need to be adjusted to account for when filters are applied
-        //            TotalNumItems = _context.Burial.Count()
-        //        }
-        //    };
-        //    return View("Index");
-        //}
-
         // GET: Burials/Details/5
-        public async Task<IActionResult> Details(int? id) //Jonah changed this int to nullable (int?). If something breaks this could likely be the cause
+        public async Task<IActionResult> Details(int? id) 
         {
             ViewBag.NavBar = "Browse";
 
@@ -142,9 +122,13 @@ namespace EgyptExcavation
             {
                 return NotFound();
             }
+            var idSplit = burial.BurialId.Split(" ");
 
             var samples = _context.BiologicalSample.Where(s => s.BurialId == burial.BurialId).ToList();
             ViewBag.Samples = samples;
+
+            var uploads = _context.Files.Where(t => t.BurialId == burial.BurialId).ToList();
+            ViewBag.Uploads = uploads;
 
             return View(burial);
         }
@@ -179,7 +163,7 @@ namespace EgyptExcavation
 
         // GET: Burials/Edit/5
         [Authorize(Policy = "writepolicy")]
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
             ViewBag.NavBar = "Browse";
 
