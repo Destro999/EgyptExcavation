@@ -29,14 +29,13 @@ namespace EgyptExcavation
         {
             services.AddControllersWithViews();
 
-            //services.AddDbContext<EgyptExcavationContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("EgyptExcavationContext")));
+            services.AddDbContext<FileUploadsContext>(options => options.UseSqlite(Configuration["ConnectionStrings:FileUploadConnection"]));
 
-            services.AddDbContext<EgyptContext>(options => options.UseSqlite(Configuration["ConnectionStrings:EgyptExcavationDbConnection"]));
+            services.AddDbContext<EgyptContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:EgyptExcavationDbConnection"]));
+            //services.AddDbContext<EgyptContext>(options => options.UseSqlServer(ConnectionStringGenerator.GetRDSConnectionString()));
 
-            services.AddDbContext<ApplicationDbContext>(opts =>
-                opts.UseSqlServer(Configuration[
-                    "ConnectionStrings:IdentityConnection"]));
+            services.AddDbContext<ApplicationDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
                  .AddDefaultUI()
                  .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -50,7 +49,7 @@ namespace EgyptExcavation
                 options.AddPolicy("writepolicy",
                     builder => builder.RequireRole("Admin", "Researcher"));
                 options.AddPolicy("adminpolicy",
-                    builder => builder.RequireRole("Admin", "Reasearcher", "User"));
+                    builder => builder.RequireRole("Admin"));
             });
         }
 

@@ -18,7 +18,7 @@
 
                         <div class="img-details text-center">
                             <h1>@Model.BurialId</h1>
-                            @if (@Model.HasPhoto)
+                            @if (@Model.HasPhotoMethod())
                             {
                                 <img src="/img/browse/@Model.GetPhotoPath()" class="panel-img-top" style="max-width:40% " alt="...">
                             }

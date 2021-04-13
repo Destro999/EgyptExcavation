@@ -90,13 +90,24 @@ namespace EgyptExcavation.Models
         public string HeadDirection { get; set; }
         public string Gamous { get; set; }
         public string BurialIcon { get; set; }
-        public string BurialIcon2 { get; set; }
+        public long? BurialIcon2 { get; set; }
         public string BurialPreservation { get; set; }
         [Key]
         public int BurialIdInt { get; set; }
-        public bool HasPhoto { get; set; }
+        public long HasPhoto { get; set; }
 
-        public string GetPhotoPath ()
+        public bool HasPhotoMethod()
+        {
+            if (HasPhoto == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public string GetPhotoPath()
         {
             return this.BurialIdInt.ToString() + ".jpg";
         }

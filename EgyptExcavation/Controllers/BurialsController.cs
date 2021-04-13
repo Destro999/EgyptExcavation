@@ -14,10 +14,12 @@ namespace EgyptExcavation
     public class BurialsController : Controller
     {
         private readonly EgyptContext _context;
+        private readonly FileUploadsContext fileCtx;
 
-        public BurialsController(EgyptContext context)
+        public BurialsController(EgyptContext context, FileUploadsContext fctx)
         {
             _context = context;
+            fileCtx = fctx;
         }
 
 
@@ -75,9 +77,9 @@ namespace EgyptExcavation
             {
                 query = query.Where(b => b.YearFound == filters.YearFound);
             }
+            var skipNum = pageNum > 0 ? pageNum - 1 : pageNum;
+            var burials = query.OrderByDescending(x => x.HasPhoto).Skip((skipNum) * pageSize).Take(pageSize).ToList();
 
-            var burials = query.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList();
-            
 
 
 
@@ -116,18 +118,17 @@ namespace EgyptExcavation
                 return NotFound();
             }
 
-            var burial = await _context.Burial
-                .FirstOrDefaultAsync(m => m.BurialIdInt == id);
+            var burial = _context.Burial
+                .FirstOrDefault(m => m.BurialIdInt == id);
             if (burial == null)
             {
                 return NotFound();
             }
-            var idSplit = burial.BurialId.Split(" ");
 
             var samples = _context.BiologicalSample.Where(s => s.BurialId == burial.BurialId).ToList();
             ViewBag.Samples = samples;
 
-            var uploads = _context.Files.Where(t => t.BurialId == burial.BurialId).ToList();
+            var uploads = fileCtx.Files.Where(t => t.BurialId == burial.BurialId).ToList();
             ViewBag.Uploads = uploads;
 
             return View(burial);

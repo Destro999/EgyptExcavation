@@ -18,14 +18,16 @@ namespace EgyptExcavation.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private readonly EgyptContext _context;
+        private readonly FileUploadsContext fileCtx;
 
         public int PictureSize = 5;
 
-        public HomeController(ILogger<HomeController> logger, EgyptContext context)
+        public HomeController(ILogger<HomeController> logger, EgyptContext context, FileUploadsContext fctx)
         {
             _logger = logger;
 
             _context = context;
+            fileCtx = fctx;
         }
 
         public IActionResult Index()
@@ -94,8 +96,8 @@ namespace EgyptExcavation.Controllers
                         objfiles.DataFiles = target.ToArray();
                     }
 
-                    _context.Files.Add(objfiles);
-                    _context.SaveChanges();
+                    fileCtx.Files.Add(objfiles);
+                    fileCtx.SaveChanges();
                     return RedirectToAction(nameof(Index));
 
                 }
@@ -105,8 +107,8 @@ namespace EgyptExcavation.Controllers
 
             //if (ModelState.IsValid)
             //{
-            //    _context.Add(upload);
-            //    await _context.SaveChangesAsync();
+            //    fileCtx.Add(upload);
+            //    await fileCtx.SaveChangesAsync();
             //    return RedirectToAction(nameof(Index));
             //}
             //return View(upload);
@@ -122,12 +124,12 @@ namespace EgyptExcavation.Controllers
 
         public IActionResult ImageUploads()
         {
-            return View(_context.Files.ToList());
+            return View(fileCtx.Files.ToList());
         }
 
         public IActionResult UploadDetails(int id)
         {
-            return View(_context.Files.Where(x => x.DocumentId == id).FirstOrDefault());
+            return View(fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault());
         }
     }
 }

@@ -63,7 +63,7 @@ namespace EgyptExcavation.Controllers
             {
                 _context.Add(biologicalSample);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Burials");
             }
             return View(biologicalSample);
         }

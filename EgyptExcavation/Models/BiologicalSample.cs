@@ -10,11 +10,9 @@ namespace EgyptExcavation.Models
 {
     public partial class BiologicalSample
     {
-        [Key]
-        public int BiologicalId { get; set; }
+        public string BurialId { get; set; }
         public string RackNumber { get; set; }
         public string BagNumber { get; set; }
-        public string BurialId { get; set; }
         public string LowPairNs { get; set; }
         public string HighPairNs { get; set; }
         public string BurialLocationNs { get; set; }
@@ -28,6 +26,7 @@ namespace EgyptExcavation.Models
         public string PreviouslySampled { get; set; }
         public string Notes { get; set; }
         public string Initials { get; set; }
-        public string Column17 { get; set; }
+        [Key]
+        public int BiologicalId { get; set; }
     }
 }
