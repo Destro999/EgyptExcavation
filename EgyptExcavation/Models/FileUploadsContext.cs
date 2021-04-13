@@ -36,11 +36,11 @@ namespace EgyptExcavation.Models
             {
                 entity.HasKey(e => e.DocumentId);
 
-                entity.Property(e => e.DocumentId).ValueGeneratedNever();
+                //entity.Property(e => e.DocumentId).ValueGeneratedNever();
 
                 entity.Property(e => e.BurialId).HasColumnType("nvarchar(50)");
 
-                entity.Property(e => e.DataFiles).HasColumnType("varbinary");
+                entity.Property(e => e.DataFiles).HasColumnType("varbinary(max)");
 
                 entity.Property(e => e.FileType).HasColumnType("nvarchar(50)");
 

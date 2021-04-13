@@ -1,9 +1,9 @@
 
 {
     "region" : "us-east-1",
-    "configuration" : "Release",
+    "configuration" : "Debug",
     "framework"     : "netcoreapp3.1",
-    "self-contained" : false,
+    "self-contained" : true,
     "application"    : "BYUFagElGamous",
     "environment"    : "Byufagelgamous-env",
     "enable-xray"    : false,

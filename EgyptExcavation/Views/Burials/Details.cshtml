@@ -737,7 +737,7 @@
     <br />
     @foreach (var upload in ViewBag.Uploads)
     {
-        <a asp-action="UploadDetails" asp-controller="Home" asp-route-id="@upload.DocumentId" class="btn btn">File Upload #@(ViewBag.Uploads.IndexOf(upload) + 1)</a>
+        <a asp-action="UploadDetails" asp-controller="Home" asp-route-id="@upload" class="btn btn">File Upload #@(ViewBag.Uploads.IndexOf(upload) + 1)</a>
     }
     <br />
     <br />

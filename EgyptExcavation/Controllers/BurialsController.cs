@@ -128,7 +128,7 @@ namespace EgyptExcavation
             var samples = _context.BiologicalSample.Where(s => s.BurialId == burial.BurialId).ToList();
             ViewBag.Samples = samples;
 
-            var uploads = fileCtx.Files.Where(t => t.BurialId == burial.BurialId).ToList();
+            var uploads = fileCtx.Files.Where(t => t.BurialId == burial.BurialId).Select(x => x.DocumentId).ToList();
             ViewBag.Uploads = uploads;
 
             return View(burial);

@@ -29,7 +29,7 @@ namespace EgyptExcavation
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<FileUploadsContext>(options => options.UseSqlite(Configuration["ConnectionStrings:FileUploadConnection"]));
+            services.AddDbContext<FileUploadsContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:FileUploadConnection"]));
 
             services.AddDbContext<EgyptContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:EgyptExcavationDbConnection"]));
             //services.AddDbContext<EgyptContext>(options => options.UseSqlServer(ConnectionStringGenerator.GetRDSConnectionString()));

@@ -84,7 +84,7 @@ namespace EgyptExcavation.Controllers
 
                     var objfiles = new Files()
                     {
-                        DocumentId = 0,
+                        //DocumentId = 0,
                         Name = newFileName,
                         FileType = fileExtension,
                         BurialId = newBurialId
@@ -98,7 +98,7 @@ namespace EgyptExcavation.Controllers
 
                     fileCtx.Files.Add(objfiles);
                     fileCtx.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    return View("FileUploadSuccessful");
 
                 }
             }
