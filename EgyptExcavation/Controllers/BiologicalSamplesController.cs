@@ -12,6 +12,7 @@ namespace EgyptExcavation.Controllers
 {
     public class BiologicalSamplesController : Controller
     {
+        // Connect to database
         private readonly EgyptContext _context;
 
         public BiologicalSamplesController(EgyptContext context)
@@ -21,12 +22,14 @@ namespace EgyptExcavation.Controllers
 
         [Authorize(Policy = "writepolicy")]
         // GET: BiologicalSamples
+        // Not in use
         public async Task<IActionResult> Index()
         {
             return View(await _context.BiologicalSample.ToListAsync());
         }
 
         // GET: BiologicalSamples/Details/5
+        // Shows details of an individual sample. You get here from the details of a burial listing
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,6 +48,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Create
+        // Create form for new record
         [Authorize(Policy = "writepolicy")]
         public IActionResult Create(int? id = null)
         {
@@ -58,8 +62,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // POST: BiologicalSamples/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Save new record
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "writepolicy")]
@@ -75,6 +78,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Edit/5
+        // Edit form
         [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -94,6 +98,7 @@ namespace EgyptExcavation.Controllers
         // POST: BiologicalSamples/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Save edits
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "writepolicy")]
@@ -128,6 +133,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // GET: BiologicalSamples/Delete/5
+        // Delete form
         [Authorize(Policy = "adminpolicy")]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -147,6 +153,7 @@ namespace EgyptExcavation.Controllers
         }
 
         // POST: BiologicalSamples/Delete/5
+        // Deletes record
         [Authorize(Policy = "adminpolicy")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -186,8 +186,4 @@
     <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="OldFiles\" />
-  </ItemGroup>
-
 </Project>

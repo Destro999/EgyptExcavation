@@ -13,6 +13,7 @@ namespace EgyptExcavation
 {
     public class BurialsController : Controller
     {
+        // Connect to Burials, Biological Samples, File Uploads
         private readonly EgyptContext _context;
         private readonly FileUploadsContext fileCtx;
 
@@ -24,7 +25,7 @@ namespace EgyptExcavation
 
 
         // GET: Burials
-        // Edited by Jonah to include Pagination
+        // Returns Burials view. Includes pagination, filters, all the info that the cards need
         public IActionResult Index(string filterId, int pageNum = 0)
         {
             ViewBag.NavBar = "Browse";
@@ -77,29 +78,27 @@ namespace EgyptExcavation
             {
                 query = query.Where(b => b.YearFound == filters.YearFound);
             }
+
+            // pagination
             var skipNum = pageNum > 0 ? pageNum - 1 : pageNum;
             var burials = query.OrderByDescending(x => x.HasPhoto).Skip((skipNum) * pageSize).Take(pageSize).ToList();
 
-
-
-
-
+            // put the data in a view model
             BrowseViewModel browseViewModel = new BrowseViewModel
             {
-                //Burials = _context.Burial.OrderByDescending(x => x.HasPhoto).Skip((pageNum - 1) * pageSize).Take(pageSize).ToList(),
                 Burials = burials,
                 PageNumberingInfo = new PageNumberingInfo
                 {
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
-                    // This will need to be adjusted to account for when filters are applied
+                    // Takes count from filtered query instead of all items in database
                     TotalNumItems = query.Count()
                 }
             };
             return View(browseViewModel);
         }
 
-
+        // Creates the filter string for Burials index
         [HttpPost]
         public IActionResult Filter(string[] filter)
         {
@@ -109,6 +108,7 @@ namespace EgyptExcavation
 
 
         // GET: Burials/Details/5
+        // Pull up the details for a burial. Includes links to file uploads and biological samples.
         public async Task<IActionResult> Details(int? id) 
         {
             ViewBag.NavBar = "Browse";
@@ -135,6 +135,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Create
+        // Create new burial record. Takes user to form
         [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
@@ -144,8 +145,7 @@ namespace EgyptExcavation
         }
 
         // POST: Burials/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Get here from the form. Add the new burial to the database
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "writepolicy")]
@@ -163,6 +163,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Edit/5
+        // Edit form for an existing burial. Auto-populates all the necessary fields
         [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -184,6 +185,7 @@ namespace EgyptExcavation
         // POST: Burials/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Save edits to a burial
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Policy = "writepolicy")]
@@ -219,6 +221,7 @@ namespace EgyptExcavation
         }
 
         // GET: Burials/Delete/5
+        // Requires admin priveleges. Asks user if they really want to delete
         [Authorize(Policy = "adminpolicy")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -239,6 +242,7 @@ namespace EgyptExcavation
         }
 
         // POST: Burials/Delete/5
+        // Required admin priveleges. Deletes record
         [Authorize(Policy = "adminpolicy")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -251,6 +255,7 @@ namespace EgyptExcavation
             return RedirectToAction(nameof(Index));
         }
 
+        // Helper function to return if a burial exists in the database
         private bool BurialExists(int id)
         {
             ViewBag.NavBar = "Browse";

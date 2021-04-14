@@ -17,11 +17,13 @@ namespace EgyptExcavation.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
+        // File storage is in separate database from burials and biological samples. Contexts here
         private readonly EgyptContext _context;
         private readonly FileUploadsContext fileCtx;
 
         public int PictureSize = 5;
 
+        // constructor
         public HomeController(ILogger<HomeController> logger, EgyptContext context, FileUploadsContext fctx)
         {
             _logger = logger;
@@ -30,12 +32,14 @@ namespace EgyptExcavation.Controllers
             fileCtx = fctx;
         }
 
+        // Home page
         public IActionResult Index()
         {
             ViewBag.NavBar = "Home";
             return View();
         }
 
+        // Takes user to portal to add burial, biological info, or file upload. Requires priveleges
         [Authorize(Policy = "writepolicy")]
         public IActionResult AddRecord()
         {
@@ -48,12 +52,14 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        // Takes user to gallery view
         public IActionResult Gallery()
         {
             ViewBag.NavBar = "Gallery";
             return View();
         }
 
+        // Form to upload new file
         [Authorize(Policy = "writepolicy")]
         [HttpGet]
         public IActionResult UploadFile(int? id = null)
@@ -70,6 +76,7 @@ namespace EgyptExcavation.Controllers
             return View();
         }
 
+        // Post that adds file to database as varbinary
         [Authorize(Policy = "writepolicy")]
         [HttpPost]
         public IActionResult UploadFile(IFormFile files, Files file)
@@ -130,22 +137,26 @@ namespace EgyptExcavation.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        // returns list of all the image uploads. Not currently in use in production.
         public IActionResult ImageUploads()
         {
             return View(fileCtx.Files.ToList());
         }
 
+        // shows details of an individual file upload
         public IActionResult UploadDetails(int id)
         {
             return View(fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault());
         }
 
+        //Asks user if they really want to delete a file upload
         [Authorize(Policy = "adminpolicy")]
         public IActionResult DeleteUploadConfirmation(int id)
         {
             return View(fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault());
         }
 
+        // Actually deletes the file upload and sends user back to list of burials
         [Authorize(Policy = "adminpolicy")]
         public IActionResult DeleteUpload(int id)
         {
