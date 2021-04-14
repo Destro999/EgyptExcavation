@@ -4,7 +4,6 @@
     ViewData["Title"] = "Upload File";
 }
 
-
 <link rel="icon" href="~/img/icon.jpg" type="image/icon type">
 
 <h1>Upload Field Notes or Photos Here</h1>
@@ -24,7 +23,7 @@
                                     <label class="control-label text-center" style="text-decoration: underline;" asp-for="BurialId"><h3><b>Burial Id</b></h3></label>
                                     <p><b>Please the following format:</b> </p>
                                     <p>N 190/200 E 40/50 SE #9</p>
-                                    <input asp-for="BurialId" class="form-control" />
+                                    <input asp-for="BurialId" class="form-control" value="@ViewBag.BurialId"/>
                                     <span asp-validation-for="BurialId" class="text-danger"></span>
                                     <input asp-for="DocumentId" class="form-control" type="hidden" />
                                     <span asp-validation-for="DocumentId"></span>

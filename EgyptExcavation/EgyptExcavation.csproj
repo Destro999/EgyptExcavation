@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <None Include=".platform\00_myconf.config" />
-    <None Include=".platform\nginx\conf.d\proxy.conf" />
+    <Content Include=".platform\nginx\conf.d\proxy.conf" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />

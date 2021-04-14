@@ -122,19 +122,6 @@
                                     {
                                         <p>The length of the remains from head to foot at the time of the discovery:  <b>Unreported</b></p>
                                     }
-                                    <br />
-
-
-
-                                    @if (!string.IsNullOrEmpty(Model.HairColor))
-                                    {
-                                        <p>Hair color observed on remains:  <b>@Model.HairColor</b></p>
-
-                                    }
-                                    else
-                                    {
-                                        <p>Hair color observed on remains: <b>Unreported</b> </p>
-                                    }
 
 
                                     @if (!string.IsNullOrEmpty(@Model.EstimateAge))
@@ -749,7 +736,8 @@
             @if (User.IsInRole("Admin") || User.IsInRole("Researcher"))
             {
                 <a asp-action="Edit" asp-route-id="@Model.BurialIdInt" class="btn btn-warning">Edit Record</a>
-                <a asp-controller="BiologicalSamples" asp-action="Create" class="btn btn-success">Add Biological Sample</a>
+                <a asp-controller="BiologicalSamples" asp-action="Create" asp-route-id="@Model.BurialIdInt" class="btn btn-success">Add Biological Sample</a>
+                <a asp-controller="Home" asp-action="UploadFile" asp-route-id="@Model.BurialIdInt" class="btn">Upload File/Field Notes</a>
 
 
             }

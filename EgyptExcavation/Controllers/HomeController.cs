@@ -56,9 +56,17 @@ namespace EgyptExcavation.Controllers
 
         [Authorize(Policy = "writepolicy")]
         [HttpGet]
-        public IActionResult UploadFile()
+        public IActionResult UploadFile(int? id = null)
         {
             ViewBag.NavBar = "Upload";
+
+            string? burialId = null;
+            if (id != null)
+            {
+                burialId = _context.Burial.Where(x => x.BurialIdInt == id).Select(x => x.BurialId).FirstOrDefault();
+            }
+
+            ViewBag.BurialId = burialId;
             return View();
         }
 
@@ -130,6 +138,21 @@ namespace EgyptExcavation.Controllers
         public IActionResult UploadDetails(int id)
         {
             return View(fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault());
+        }
+
+        [Authorize(Policy = "adminpolicy")]
+        public IActionResult DeleteUploadConfirmation(int id)
+        {
+            return View(fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault());
+        }
+
+        [Authorize(Policy = "adminpolicy")]
+        public IActionResult DeleteUpload(int id)
+        {
+            var upload = fileCtx.Files.Where(x => x.DocumentId == id).FirstOrDefault();
+            fileCtx.Files.Remove(upload);
+            fileCtx.SaveChanges();
+            return RedirectToAction("Index","Burials");
         }
     }
 }

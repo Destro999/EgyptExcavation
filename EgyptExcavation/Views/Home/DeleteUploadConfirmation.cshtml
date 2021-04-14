@@ -3,17 +3,15 @@
 *@
 @{
 }
+
 @model Files
 
 <div class="text-center">
     <h1>File Upload</h1>
     <h3 class="mb-2 text-muted">File ID #@Model.DocumentId-- @Model.BurialId</h3>
-    <a href="javascript:history.back()" class="btn btn-primary">Back to Burial Listing</a>
-    @if (User.Identity.IsAuthenticated)
-    {
-        @if (User.IsInRole("Admin"))
-        {
-    <a asp-controller="Home" asp-action="DeleteUploadConfirmation" asp-route-id="@Model.DocumentId" class="btn btn-danger">Delete File</a>}}
+    <p>Do you really want to delete this record?</p>
+    <a href="javascript:history.back(2)" class="btn btn-primary">Back to Burial Listing</a>
+    <a asp-controller="Home" asp-action="DeleteUpload" asp-route-id="@Model.DocumentId" class="btn btn-danger">Delete</a>
     <br />
 
     @if (Model.FileType.Contains("jpg") || Model.FileType.Contains("png") || Model.FileType.Contains("JPG") || Model.FileType.Contains("PNG"))

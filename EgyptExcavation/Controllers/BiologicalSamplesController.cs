@@ -46,8 +46,14 @@ namespace EgyptExcavation.Controllers
 
         // GET: BiologicalSamples/Create
         [Authorize(Policy = "writepolicy")]
-        public IActionResult Create()
+        public IActionResult Create(int? id = null)
         {
+            string? burialId = null;
+            if (id != null)
+            {
+                burialId = _context.Burial.Where(x => x.BurialIdInt == id).Select(x => x.BurialId).FirstOrDefault();
+            }
+            ViewBag.BurialId = burialId;
             return View();
         }
 
@@ -147,9 +153,11 @@ namespace EgyptExcavation.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var biologicalSample = await _context.BiologicalSample.FindAsync(id);
+            var burialId = biologicalSample.BurialId;
+            int burialIdInt = _context.Burial.Where(x => x.BurialId == burialId).Select(x => x.BurialIdInt).FirstOrDefault();
             _context.BiologicalSample.Remove(biologicalSample);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Burials");
         }
 
         private bool BiologicalSampleExists(int id)
